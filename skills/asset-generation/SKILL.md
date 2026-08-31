@@ -46,11 +46,26 @@ hands raised and fingers spread so the construction is visible and inherited.
 
 This applies to any character who will hold, carry, point, sew or grip.
 
+**But weigh it.** Hands are the medium's most persistent weakness, and
+simplified or stylised hands are far more forgiving than anatomically
+articulated ones. Specify full articulation for a character whose story depends
+on manipulating objects; keep the design simple for one whose does not. Either
+way, avoid staging a story beat around a hand manipulating a small object.
+
+## Write the identity string
+
+Once a character sheet is approved, write that character's description **once**
+into `canon.md` — build, face, colouring, signature clothing, continuity mark.
+Every later prompt pastes it in **byte-identical**. Paraphrasing it reads to the
+model as a different character and is a leading cause of drift.
+
 ## Generating each asset
 
 - Feed the **approved parent references** as source images — that is what holds
   identity. Respect the payload cap; about two high-resolution references per
   call, and describe the rest.
+- Generate **multiple angles** of each character, not a single portrait. Three
+  or four views measurably improve stability once shots begin.
 - Use the templates in `prompt-templates.md`.
 - End every prompt with an **AVOID** list covering that asset's likely failure
   modes, and always include `no text, no letters, no watermark`.

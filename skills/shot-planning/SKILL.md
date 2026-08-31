@@ -23,7 +23,8 @@ cheapest and strongest way to show time passing.
 
 ## Every shot needs
 
-- **Number and title**
+- **Number and title** — number in tens (`SQ0010_SH0020`) so shots can be
+  inserted later without renumbering the reel
 - **Plot** — what happens, one or two sentences
 - **Cast** — who appears
 - **Location and time of day** — naming the approved environment plate
@@ -31,7 +32,8 @@ cheapest and strongest way to show time passing.
 - **Camera** — angle and one movement, with an explicit end framing
 - **Dialogue or narration** — in the film's language, with a translation
 - **Sound** — effects and atmosphere, and what the score is doing
-- **Duration**
+- **Duration** — provisional for speaking shots; the recorded line will set the
+  real length in the voice stage
 - **Reference assets** — which approved images this shot is built from
 - **Generation prompt** — written to the template, with timed beats
 
@@ -43,6 +45,22 @@ reminder, the film-look block and an AVOID list.
 
 Note for each shot whether it is **speaking** or **silent** — they take
 different generation paths, and the count of each determines the budget.
+
+## Staging and screen grammar
+
+Decide these in planning, not while generating — they are camera problems, not
+performance problems, and they matter more in animation than live action
+because there is no incidental real geography to orient the viewer.
+
+- **The line.** Keep the camera on one side of the axis between two characters
+  for the length of a scene, so one stays screen-left and the other screen-
+  right. Crossing it makes the audience feel the characters have swapped.
+- **Screen direction.** A character travelling left-to-right keeps travelling
+  left-to-right across cuts, or the audience reads it as turning back.
+- **Eyelines.** Where a character looks must agree with where the other one is
+  in the geography you established.
+- **Silhouette.** Each key pose should read as a black shape. If it doesn't,
+  restage it.
 
 ## Continuity rules
 

@@ -25,6 +25,8 @@ Count the actual work from `assets.md` and `shots.md`:
 
 - Reference images still to generate, plus a realistic allowance for revisions
   (assume roughly one retry in three)
+- Voice lines, at five to ten takes each on hero lines — cheap, and the takes
+  are where the performance comes from
 - Keyframes: one per shot, two for silent shots that need an end frame
 - Draft clips, plus retakes
 - Full-resolution renders of approved shots
@@ -33,6 +35,11 @@ Count the actual work from `assets.md` and `shots.md`:
 
 Present it as a short table by category with a total, then state the balance
 and whether it covers the work.
+
+**Verify prices at the endpoint you will actually bill against** — published
+per-second figures for the same model vary by an order of magnitude across
+secondary sources, and some models price counter-intuitively (charging *less*
+with reference video, or including audio whether you ask for it or not).
 
 ## Be honest about the shape of the spend
 

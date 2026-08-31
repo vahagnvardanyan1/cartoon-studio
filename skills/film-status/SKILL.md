@@ -9,13 +9,14 @@ Read the production folder and give an honest account of where the film stands.
 
 ## Gather
 
-Read `canon.md`, `assets.md`, `shots.md` and `audio.md`. Do not rely on
+Read `canon.md`, `assets.md`, `shots.md` and `audio.md`, and check whether the
+animatic exists and is approved. Do not rely on
 conversation memory — the files are the record, and a session may have been
 resumed from elsewhere.
 
 ## Report
 
-**Stage.** Which of the eight stages is current, and what gate it is waiting on.
+**Stage.** Which of the ten stages is current, and what gate it is waiting on.
 
 **Assets.** How many approved, how many pending, and name anything superseded
 so nothing downstream is built on a stale reference.

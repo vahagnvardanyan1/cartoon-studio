@@ -28,8 +28,10 @@ Say **/start** and name your story. For example:
 | `/visual-style` | Defines the look and proves it in one frame |
 | `/asset-generation` | Generates reference art, one approved piece at a time |
 | `/shot-planning` | Builds the full shot list |
-| `/clip-generation` | Renders the clips, shot by shot |
-| `/film-assembly` | Adds voice, music, titles and delivers the film |
+| `/voice-production` | Records the narration and dialogue — **before any picture** |
+| `/animatic` | Cuts the stills to the voice so you can watch the whole film first |
+| `/clip-generation` | Renders the clips, shot by shot, into the reel |
+| `/film-assembly` | Music, sound, grade, titles, final film |
 
 **While you work:**
 
@@ -55,9 +57,16 @@ Say **/start** and name your story. For example:
 3. **Visual elements** — every character, place, prop and recurring detail.
 4. **Visual style** — the look, locked as a single reference frame.
 5. **Asset generation** — reference art, one piece at a time, each approved.
-6. **Shot planning** — the full shot list with camera, action and dialogue.
-7. **Clip generation** — drafts first, then final quality once approved.
-8. **Assembly** — voices, music, sound, titles, and the finished film.
+6. **Shot planning** — the full shot list with camera, action and staging.
+7. **Voice** — narration and dialogue recorded *before* any picture, because
+   lip-sync tools are audio-driven and the line sets the shot's length.
+8. **Animatic** — the stills cut to the voice, watched as a film. You approve
+   the whole thing before a single clip is rendered.
+9. **Clip generation** — drafts first, each one cut into the reel as it lands.
+10. **Assembly** — music, sound design, grade, titles, and the finished film.
+
+Stages 7 and 8 are the ones most AI pipelines skip, and they are where most of
+the wasted effort gets avoided.
 
 ## A note on cultural accuracy
 

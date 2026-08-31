@@ -9,7 +9,11 @@ Combine the approved clips into one film with a full soundtrack.
 
 Read `${CLAUDE_PLUGIN_ROOT}/references/model-notes.md` for the compositor's
 scene format — particularly the audio-track structure, which is not where you
-would expect.
+would expect — and `${CLAUDE_PLUGIN_ROOT}/references/voice-and-audio.md` for
+music, effects and the mix.
+
+By this point the reel already contains every approved clip in place of its
+still, so assembly is finishing, not construction.
 
 ## Build the picture first
 
@@ -21,20 +25,34 @@ Render this picture-only cut and **inspect it** — sample frames across the
 whole timeline and check that the shots are in order, that continuity holds
 across the joins, and that nothing has been dropped.
 
-## Then build the audio
+## Then finish the audio
 
-**Voice.** Generate every narration and dialogue line with the approved voice
-model. Verify the language is genuinely supported and audition voices on one
-identical sentence before committing — let a native speaker choose. Use
-distinct voices for narrator and characters.
+**Voice** is already recorded and approved from the voice stage. Only regenerate
+a line if picture changed — and then match it using the seed and exact tag
+string logged in `audio.md`.
 
-**Music.** Check the music model's maximum duration before planning cues. If
-the film is longer, write two or more cues that change with the story rather
-than looping one — the point where the music turns should be the point where
-the story does.
+**Music. Lock picture first.** No AI music tool scores to picture: none take a
+video, hit a cue point or conform to timecode. Regenerating against a moving
+cut wastes quota. Then:
+
+- Generate **instrumental** cues deliberately longer than needed, for handles
+- **Export WAV, not MP3** — MP3 artifacts survive into the mix
+- **Export stems if the platform offers them.** This is the most consequential
+  choice in the whole audio stage. With stems you can duck strings under
+  dialogue and pull drums for a tension beat; without them you have a stereo
+  bounce you can only fade
+- Check the model's **maximum duration** before planning. If the film is
+  longer, write cues that change with the story rather than looping one — the
+  point where the music turns should be the point where the story does
+- Use whatever mechanism the platform offers for **reusing a track's character**
+  across cues, so the score sounds like one film rather than a playlist
 
 **Sound design.** Effects for the specific actions in each shot, plus
-atmosphere beds per location.
+atmosphere beds per location; use a looping mode for ambience where available.
+
+**Set the project rate on day one — 48 kHz, 24-bit — and reject any asset that
+does not meet it.** Upsampling does not restore a missing top octave; it will
+sound dull beside library effects.
 
 ## Mix it
 
@@ -56,6 +74,25 @@ the line.
 Typeset these in the edit, never in a generated frame — models mangle
 lettering, especially non-Latin scripts. An opening title in the story's own
 language and a closing credit crediting the original author.
+
+## Finish the picture
+
+Raw generation is never the final picture. Treat these as pipeline stages, not
+cleanup:
+
+- **Colour grade** the whole film to one look. Along with sound and pacing,
+  this is most of what separates a finished film from generated clips.
+- **Upscale, if delivering above draft resolution.** Architecture matters more
+  than brand: upscalers trained on real degraded footage sharpen what is there
+  and so *amplify* the temporal flicker inherent in generated video. Diffusion-
+  based upscalers invent plausible texture matching generated footage and are
+  the right family here — run them at low restoration strength or they
+  over-sharpen. Some are purpose-built for animation and process frames
+  independently to avoid smearing.
+- **Order matters: upscale first, then interpolate frame rate.** Interpolation
+  smooths motion; it does not sharpen pixels.
+- **Expect to composite.** A large share of finished shots on real productions
+  are stitched from several generations. Assume it is normal, not a failure.
 
 ## Deliver
 

@@ -11,13 +11,18 @@ and stop at every gate for approval.
 
 ## Before anything else
 
-Read `${CLAUDE_PLUGIN_ROOT}/references/production-lessons.md` in full. It
-records the specific failures that ruin AI animation. Do not begin generating
-without it.
+Read these in full before generating anything:
 
-Then read `${CLAUDE_PLUGIN_ROOT}/references/model-notes.md` for the tooling
-constraints, and confirm the Picsart GenAI tools are available. If they are
-not, say so plainly — the production cannot run without them.
+- `${CLAUDE_PLUGIN_ROOT}/references/production-lessons.md` — the failures that
+  ruin AI animation
+- `${CLAUDE_PLUGIN_ROOT}/references/video-craft.md` — why consistency is hard
+  and what actually holds it
+- `${CLAUDE_PLUGIN_ROOT}/references/voice-and-audio.md` — voice, dialogue and
+  lip sync
+- `${CLAUDE_PLUGIN_ROOT}/references/model-notes.md` — tooling constraints
+
+Confirm the Picsart GenAI tools are available. If they are not, say so plainly
+— the production cannot run without them.
 
 ## Set up the production folder
 
@@ -25,15 +30,22 @@ Create a working folder for this film and keep it current throughout:
 
 ```
 <film-name>/
-  canon.md        story beats, continuity rules, season progression
+  canon.md        story beats, continuity rules, season progression,
+                  and the IDENTITY STRINGS — see below
   assets.md       every approved reference, with its URL and what it locks
   shots.md        the shot list
-  audio.md        every voice line, music cue and effect, with URLs
+  audio.md        every voice line and cue: text, model, voice, seed, URL
 ```
 
 `assets.md` is the spine of the production. Every approved image goes in it
 with a note on what it is the authority for. When a later stage needs a
 reference, it reads this file rather than remembering.
+
+**Identity strings.** For each character, write their physical description
+**once** in `canon.md` — build, face, colouring, signature clothing, continuity
+mark. Every later prompt pastes that block in **byte-identical**. Rewording it
+reads to the model as a different character, and is a leading cause of drift.
+Only the scene instructions change between prompts.
 
 ## The eight stages
 
@@ -47,8 +59,15 @@ Run each in order. Each has its own skill — invoke it, don't reimplement it.
 | 4 | Visual style | `visual-style` | Style keyframe approved |
 | 5 | Reference art | `asset-generation` | **Every asset approved individually** |
 | 6 | Shot planning | `shot-planning` | Shot list approved |
-| 7 | Clip generation | `clip-generation` | **Every clip approved individually** |
-| 8 | Assembly | `film-assembly` | Final film approved |
+| 7 | **Voice** | `voice-production` | Voice track approved |
+| 8 | **Animatic** | `animatic` | **The whole film approved as a reel** |
+| 9 | Clip generation | `clip-generation` | **Every clip approved, in the reel** |
+| 10 | Assembly | `film-assembly` | Final film approved |
+
+**Stages 7 and 8 are where most of the pain gets avoided.** Voice comes before
+picture because lip-sync tools are audio-driven and the recorded line sets the
+shot's length. The animatic comes before motion because you cannot judge a film
+shot by shot — a problem of perception, not of cost.
 
 ## Stage 2 — the production plan
 
@@ -82,6 +101,15 @@ before the user finds it.
 
 **Say what to check.** Present each asset with the two or three things most
 likely to be wrong, not a general "what do you think?".
+
+**State what you cannot see.** If you have not inspected an image or clip
+yourself, say so plainly rather than describing it with borrowed confidence.
+Undeclared blindness is how a wrong character size, a missing hand or a season
+error survives ten more shots before anyone notices.
+
+**Review in the reel, not alone.** From the animatic onward, every approved
+clip replaces its still in the story reel, and every review watches the film as
+it currently stands.
 
 **Fix causes, not symptoms.** A bad hand in one shot means the character sheet
 is wrong for every shot. Go back and fix the sheet.

@@ -226,3 +226,66 @@ You cannot judge a film you have not looked at.
   likely to be wrong — rather than a general "what do you think?".
 - When something is rejected, fix the *cause*, not the symptom. A wrong hand in
   one shot means the character sheet is wrong in every shot.
+
+---
+
+## 11. Lessons added after benchmarking against industry practice
+
+**Record the voice before generating picture.** Lip-sync tools are audio-driven
+— the audio file is the input and it sets the shot's length. Generating picture
+first and fitting voice afterwards makes sync unfixable. This is also how every
+Western animation studio has worked for ninety years, for the same reason: you
+animate *to* a performance.
+
+**Build an animatic before generating motion.** Keyframe stills cut to timing
+against the recorded voice, watched end to end. Not because regeneration is
+expensive — it isn't — but because **you cannot judge a film shot by shot**.
+That is a fact about perception, not about cost. Every clip can pass individual
+review and the assembled film still be dead.
+
+**Review clips inside the reel.** As each clip is approved it replaces its still
+in the animatic, and every subsequent review watches the film as it currently
+stands. A shot judged alone tells you almost nothing.
+
+**Write the identity string once and paste it byte-identical.** Rewording a
+character's description between prompts reads to the model as a different
+character. This is a leading cause of the drift that looks like model
+unreliability but is actually authoring inconsistency.
+
+**Check whether the model has a dedicated negative-prompt field before writing
+an AVOID list.** On models without one, a bare keyword list can be rendered *as
+subject matter* — asking for "no snow" can produce snow. Use grammatical
+prohibition, or better, describe the positive state you want.
+
+**Keep active instructions few, and state verbose.** Instruction adherence
+decays by position: a prompt with eight requirements honours four or five at
+random. The fix is not a shorter prompt — it is fewer *competing creative
+instructions*, front-loaded, with as much *state* as the shot needs. Because
+the model is stateless, every generation must re-declare character condition,
+continuity from the previous shot, and staging.
+
+**Give every reference an explicit job.** An unlabelled reference bleeds its
+lighting, framing and pacing into the shot when you only wanted its identity.
+
+**Keep reference strength below maximum**, or characters go stiff and cannot
+adapt to new lighting or poses.
+
+**Hold lighting colour temperature constant across a sequence.** Lighting
+influences how the model reconstructs a face, so a dramatic lighting change is a
+drift trigger.
+
+**Check that a lip-sync model documents your character type.** Many depend on a
+human face detector and explicitly do not support animals or non-humanoid
+characters. The failure is architectural — a stylised animal does not register
+and you get a no-op. No prompt fixes it.
+
+**Weigh hand articulation rather than assuming more is better.** Hands are the
+medium's most persistent weakness, and stylised hands are far more forgiving
+than anatomically articulated ones. Specify articulation only where the story
+requires manipulation — and avoid staging a beat around a hand handling a small
+object.
+
+**State plainly what you have not seen.** If you have not inspected an image or
+clip yourself, say so rather than describing it with borrowed confidence.
+Undeclared blindness is how a wrong character scale, a paw where a hand should
+be, or snow in an autumn scene survives ten more shots before anyone notices.

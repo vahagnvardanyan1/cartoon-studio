@@ -30,7 +30,12 @@ are a known failure with a known fix. In particular:
 | Shot ends in a cropped close-up | No end keyframe |
 | Speech is gibberish | Audio was fed to a general video model |
 | Wrong season or weather | Canon not restated, and no negative in the AVOID list |
-| Character looks like someone else | Shot generated from text, not from a keyframe |
+| Character looks like someone else | Shot generated from text, not from a keyframe — or the identity string was **paraphrased** instead of pasted byte-identical |
+| A thing you forbade appears anyway | Bare keyword AVOID list on a model with **no dedicated negative field** — it can render the list as subject matter. Convert to positive description |
+| Only some of your directions happened | Too many active instructions; adherence decays by position. Cut to the two or three that matter |
+| Reference bled unwanted lighting or pacing | Reference given no explicit job |
+| Character stiff, cannot adapt to the light | Reference strength at maximum |
+| Drift appears mid-clip | Clip too long; cut before the drift rather than fixing it |
 
 **If the cause is upstream, fix it upstream.** A wrong hand means the character
 sheet is wrong for every shot. Say so, fix the sheet, and list which already

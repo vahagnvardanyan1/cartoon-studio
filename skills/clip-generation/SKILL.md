@@ -8,8 +8,12 @@ description: Generate the video clips for an animated production, shot by shot, 
 Render the film shot by shot. Each clip is generated from approved reference
 art, inspected by you, then approved by the user before the next begins.
 
-Read `${CLAUDE_PLUGIN_ROOT}/references/production-lessons.md` and
+Read `${CLAUDE_PLUGIN_ROOT}/references/video-craft.md`,
+`${CLAUDE_PLUGIN_ROOT}/references/production-lessons.md` and
 `${CLAUDE_PLUGIN_ROOT}/references/model-notes.md` first.
+
+By this point the voice is recorded and the animatic is approved. Each clip
+replaces its still in the reel as it lands.
 
 ## Ask about quality first
 
@@ -22,8 +26,10 @@ it is the same model), or full resolution straight away (fewer steps, roughly
 four times the cost per attempt).
 
 **Variants** — offer one take per shot, or two takes to choose between.
-Selection does more for quality than any prompt tweak. Recommend two for
-character shots.
+Selection does more for quality than any prompt tweak; generating wide and
+letting a human cut is the craft, not a fallback. Recommend two for character
+shots. Budget the aggregate across the film, not the per-shot number — complex
+multi-character staging can consume many times what a landscape does.
 
 **Final resolution** — offer the resolutions the chosen model actually
 supports; check the catalog rather than assuming.
@@ -45,8 +51,28 @@ lighting, stating only what has changed, with the final framing pinned. Passing
 both frames is the only reliable way to stop a push-in running away into a
 cropped close-up.
 
-**3. Render the clip.** Submit asynchronously and poll. Use timed beats, one
-camera move, the size lock, the hands reminder and the AVOID list.
+**3. Render the clip.** Submit asynchronously and poll.
+
+Structure every prompt as **state, then instruction**:
+
+- **State** — paste the identity string from `canon.md` byte-identical; declare
+  what each character is wearing and holding, the continuity from the previous
+  shot, and the geometric staging. Be as verbose as needed; the model has no
+  memory of anything.
+- **Instruction** — the active creative payload, roughly 60 to 100 words,
+  front-loaded. Adherence decays by position: a prompt carrying eight
+  requirements honours four or five at random. Timed beats, one camera move.
+- **Prohibitions** — but check first whether the model has a **dedicated
+  negative field**. If it does not, a bare keyword list can be rendered *as
+  subject matter* — asking for "no snow" produces snow. Without a negative
+  field, use grammatical prohibition or, better, describe the positive state.
+
+Other rules that hold: give **every reference an explicit job** or it bleeds
+its lighting and pacing into the shot; keep **reference strength below maximum**
+or characters go stiff and cannot adapt to new light; **cap clip length**,
+since drift scales with duration; and **hold lighting colour temperature
+constant** across a sequence, because lighting affects how the model
+reconstructs a face.
 
 **4. Inspect it yourself.** Sample frames through the media tooling and look at
 them. Check: the continuity mark, the hands, the relative scale, the season,
@@ -62,15 +88,22 @@ A general video model **re-synthesises** any audio you give it, turning
 dialogue into convincing-sounding nonsense. This is catastrophic for a
 non-English film and is not fixable by prompting.
 
-For shots where a character speaks:
+For shots where a character speaks, the voice already exists from stage 7.
 
-- Generate the line with the approved voice model first
-- Use a **dedicated lip-sync model** (portrait plus audio) — these play the
-  real file and sync the mouth to it
-- Name who speaks and state that everyone else keeps their mouth closed
-- **Check the output for burned-in captions** — some avatar models hard-code
-  garbled subtitle overlays into the picture
-- Let the **audio length set the shot length**
+- Use a **dedicated lip-sync model**. Unlike general video models, these play
+  the supplied file unaltered and sync the mouth to it.
+- **Check that the model documents support for your character type.** Many
+  lip-sync tools depend on a human face detector and **explicitly do not
+  support animals or non-humanoid characters** — a stylised animal simply does
+  not register and you get a no-op or garbage. This is architectural; prompting
+  cannot fix it. Choose a model that documents non-human range.
+- Name who speaks and state that everyone else keeps their mouth closed.
+- **Inspect for burned-in captions** — some models hard-code subtitle overlays,
+  often garbled, into the picture.
+- Watch for the universal artifacts: teeth flicker, mouth-region blur where the
+  face crop is lower resolution than the frame, visible seams on moving
+  cameras, and degradation at profile angles.
+- The audio already set the shot length in stage 7.
 
 For everything else, render silent and lay the voice over it in assembly.
 Approximate sync with correct language beats perfect sync with gibberish.
@@ -87,8 +120,13 @@ will need redoing.
 
 ## Approval
 
-One clip, one review, one approval, then the next. Never batch. On rejection,
-diagnose the actual cause before regenerating — inspect the frames and name
-what went wrong rather than rerolling and hoping.
+One clip, one review, one approval, then the next. Never batch.
+
+**Cut each approved clip into the reel in place of its still, and review it
+there.** A shot judged alone tells you almost nothing about whether it works.
+
+On rejection, diagnose the actual cause before regenerating — inspect the
+frames and name what went wrong rather than rerolling and hoping. And say
+plainly when you have not been able to view something yourself.
 
 Record every approved clip URL, with its duration, in `shots.md`.
