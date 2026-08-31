@@ -24,6 +24,25 @@ Read these in full before generating anything:
 Confirm the Picsart GenAI tools are available. If they are not, say so plainly
 — the production cannot run without them.
 
+## What to ask before you start, and what not to
+
+Ask only what you genuinely cannot proceed without:
+
+- **The story.** Title, text, or a description.
+- **The language of the voice track**, because it is the most likely thing to
+  break and you will test it first.
+- **Any hard constraint** the user already has — a deadline, a credit budget, a
+  required format or aspect ratio, a platform it must fit.
+
+**Do not ask how long the film should be.** The user cannot answer that before
+either of you knows the story's shape, and neither can you. Runtime is an
+*output* of the story breakdown, not an input to it. Research the tale, count
+its beats, then **propose a runtime with your reasoning** — what a shorter cut
+would lose, what a longer one would add — and let the user choose or override.
+
+If the user volunteers a length unprompted, take it as a constraint and design
+to it.
+
 ## Set up the production folder
 
 Create a working folder for this film and keep it current throughout:

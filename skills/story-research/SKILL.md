@@ -54,6 +54,32 @@ before moving on. This applies especially to:
 
 Do not proceed past this until the answers are in.
 
+## Propose the runtime
+
+Once the beats exist, derive the length rather than asking for it.
+
+Count the beats. At roughly 8 to 12 seconds a beat, a tale of eight beats is
+about 90 seconds; twenty beats is around three minutes. Weight the turn and the
+ending more generously and compress the setup.
+
+Then present **two or three real options** and say what each costs the story:
+
+- The **natural length** — every beat given its due
+- A **short cut** — name exactly which beats it drops or compresses, and what
+  is lost
+- A **longer version**, if the tale genuinely supports one — name what it adds
+
+Recommend one, with reasoning. Give the approximate shot count and credit cost
+for each so the choice is informed.
+
+If the user has already stated a constraint, design to it and say honestly what
+had to go.
+
+**Always offer a pilot** — a 20 to 40 second slice of the opening, taken all the
+way through to a finished cut — as a first step before the full film, whichever
+length they pick. It surfaces the pipeline's problems while they are cheap and
+it is not throwaway work: it becomes the first shots of the real film.
+
 ## Output
 
 Write `canon.md` in the film folder containing the beats, characters, setting,
