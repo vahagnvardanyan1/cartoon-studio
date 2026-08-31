@@ -16,9 +16,28 @@ Say **/start** and name your story. For example:
 
 > /start Hovhannes Tumanyan's Armenian tale «Շունն ու Կատուն»
 
-You can also jump to a stage: `/story-research`, `/visual-elements`,
-`/visual-style`, `/asset-generation`, `/shot-planning`, `/clip-generation`,
-`/film-assembly`.
+## Commands
+
+**Production stages** — run in order, or jump to one:
+
+| Command | What it does |
+|---|---|
+| `/start` | Runs the whole production, stage by stage |
+| `/story-research` | Researches the source text and its culture |
+| `/visual-elements` | Lists everything that must be designed |
+| `/visual-style` | Defines the look and proves it in one frame |
+| `/asset-generation` | Generates reference art, one approved piece at a time |
+| `/shot-planning` | Builds the full shot list |
+| `/clip-generation` | Renders the clips, shot by shot |
+| `/film-assembly` | Adds voice, music, titles and delivers the film |
+
+**While you work:**
+
+| Command | What it does |
+|---|---|
+| `/film-status` | Where the production stands, what's blocked, what's stale |
+| `/redo-shot` | Diagnoses and fixes one bad shot or asset |
+| `/film-budget` | Checks credits and prices the work before you spend |
 
 ## What you need
 
