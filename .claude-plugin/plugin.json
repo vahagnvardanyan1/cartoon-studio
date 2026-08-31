@@ -1,0 +1,7 @@
+{
+  "name": "cartoon-studio",
+  "version": "0.1.0",
+  "description": "Produce a professional animated short from any story — research, visual development, approved reference art, shot planning, clip generation and final assembly, using the Picsart GenAI tools.",
+  "author": { "name": "Picsart" },
+  "keywords": ["animation", "cartoon", "video", "storytelling", "picsart"]
+}
