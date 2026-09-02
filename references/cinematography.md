@@ -357,7 +357,7 @@ OUT-FRAME <what the last frame is>
 JOB       one sentence: what this shot is FOR
 ```
 
-The **JOB** line is not decoration. Higgsfield's failure table names "camera
-clutter — shot list names angles but not what each shot is for" as a root
-cause of bad output. A shot that cannot state its job in one sentence should be
+The **JOB** line is not decoration. "Camera clutter — the shot list names
+angles but not what each shot is *for*" is a named root cause of incoherent
+output. A shot that cannot state its job in one sentence should be
 merged with its neighbour or cut.
