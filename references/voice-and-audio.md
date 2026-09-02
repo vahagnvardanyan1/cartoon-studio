@@ -277,3 +277,89 @@ where events land, which you then replace with proper effects.
 - Keep every raw generation. Never let the only copy be post-processed.
 - Deliver at the project's sample rate and check loudness against the target
   standard for the platform.
+
+---
+
+## Dialogue, not only narration
+
+A verse tale is not automatically narration. Tumanyan's *Drop of Honey* has
+the greeting written as a real exchange and both killings as shouted lines —
+and the first plan flattened all of it into a narrator talking over pictures.
+The user's note was blunt and correct: *"people should speak, not only
+telling."*
+
+**Read the source and pull out everything spoken in a character's voice.**
+Give those lines to characters, keep the rest for the narrator. A folk tale
+usually contains far more dialogue than it first appears to.
+
+Cast a **distinct voice per speaker**, including crowds. On the *Drop of Honey*
+film that was five: narrator, shopkeeper, shepherd, crowd, and a cold official
+reader for the two royal proclamations. That last one carries the satire — the
+text switches from village dialect into chancery prose, and if both come out of
+the same mouth the joke disappears.
+
+---
+
+## Let the voice change the shot COUNT, not the shot LENGTH
+
+The most important scheduling rule in this plugin.
+
+When a recorded line comes back longer than its planned shot, there are two
+ways to absorb it:
+
+- **Stretch the shot.** This is what the first film did — it slowed three
+  clips down to fit the audio, making a slow film slower. Never do this.
+- **Add shots.** Split the beat into more, shorter shots under the same
+  narration.
+
+On *Drop of Honey* the weapons catalogue came back at 13 seconds against a
+3-second shot. Beat 4 was re-planned from three shots into four sub-beats of
+two or three shots each. The film grew from 22 shots to 26 and from 87 seconds
+to 99 — **and the average shot length did not move.** That is the correct
+outcome.
+
+Re-record instead when the line is simply too slowly read: tighter direction
+(`[rattling off a list at speed, barely pausing for breath]`) and fewer lines
+cut a 13-second take to 6.
+
+---
+
+## Audio tags actually work — use them
+
+Eleven v3 takes bracketed direction inline, in English, inside non-English
+text. Three categories: emotions `[curious] [crying] [mischievously]`,
+delivery `[whispers] [shouts]`, reactions `[laughs] [sighs] [clears throat]`.
+
+```
+[warmly, an old village storyteller beginning a tale] Մի գյուղացի…
+[rattling off a list at speed, barely pausing for breath] Որը ձեռին…
+[a cry of grief turning instantly into fury, shouting] Խեղդե՜ց, խեղդե՜ց…
+[cold, official, reading a proclamation aloud from a scroll] Հանուն…
+```
+
+Check every take for two failures: **the tag being spoken aloud** instead of
+acted, and any word mispronounced. Less-trodden languages need all five runs
+listened to, not the first.
+
+---
+
+## Where the sound actually comes from now
+
+Three layers, in this order of preference:
+
+1. **Native clip audio** — `generateAudio: true` on every non-dialogue shot,
+   with the sound described in the prompt. Synced to the real motion.
+2. **Real recorded dialogue** — driven through OmniHuman on close-ups so the
+   mouth matches, laid in the edit on wider shots.
+3. **A separately generated bed** — only for what the clips cannot carry:
+   the score, and a continuous ambience if the native beds do not join up.
+
+The old approach of building an effects library and syncing it by hand is now
+the fallback, not the default.
+
+**One structural trick worth stealing.** Generate the same sound twice, in two
+different emotional contexts, and let the contrast do the work. In *Drop of
+Honey* the same fly buzzes on the honey drop at 31 seconds and on the dried
+stain at 104 — the first under a warm village bed with sheep bells, the second
+over nothing but dead wind. The audience hears the difference before noticing
+it.

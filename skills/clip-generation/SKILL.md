@@ -130,3 +130,54 @@ frames and name what went wrong rather than rerolling and hoping. And say
 plainly when you have not been able to view something yourself.
 
 Record every approved clip URL, with its duration, in `shots.md`.
+
+---
+
+## Generate long, cut short
+
+**Every clip is generated longer than the cut needs** — a 2.5-second shot is
+still generated at 6–8 seconds. There is no way to extend a clip afterwards,
+and there is always a better two seconds inside a longer take.
+
+Professional practice runs about **three generations per usable shot** and a
+25% selection rate, and over 40% of finished shots are stitched from the best
+seconds of two or more takes of the same prompt. Budget shots × 3, and treat
+composite shots as normal rather than as failure.
+
+## Audio: two different routes, decided per shot
+
+**Shots with no dialogue → `generateAudio: true`.** Seedance's own sound is
+synchronised to the motion it actually rendered, which no separately generated
+effects bed can match. Describe the sound explicitly in its own block, and
+always say what must not be there:
+
+```
+SOUND: the hard dull crack of wood striking, a single sharp yelp cut off
+instantly, a heavy body hitting dry ground, then ragged breathing and a dry
+wind. No music, no speech.
+```
+
+`generateAudio` **defaults to true**, so a shot that must be silent needs it
+turned off by hand.
+
+**Shots with dialogue in close-up → `bytedance-omnihuman-v1.5`.** Pass the
+approved keyframe as the portrait and the real recorded speech as `audioUrl`.
+The audio passes through untouched and drives the mouth, so a non-English
+language survives exactly as recorded.
+
+**Never pass speech to Seedance's `audioUrls`.** It treats supplied audio as a
+*style* reference and re-synthesises it. Armenian came back sounding Armenian
+and saying nothing.
+
+**Two-shots where both characters speak** cannot go through OmniHuman — it
+takes one portrait. Those stay Seedance mouth-movement with the dialogue laid
+under them in the edit, and their clip audio gets pulled down to ~25% so the
+model's invented babble reads as presence rather than competing speech.
+
+## Operational
+
+- Video is **async**. Fire a whole beat, then poll. A 480p clip is 2–4 minutes.
+- Expect occasional `image_url ... timeout while fetching resource`. Re-fire
+  the same job.
+- Draft everything at 480p. It is the same model at roughly a quarter the cost,
+  so the draft predicts the final honestly. Re-run only the keepers at 1080p.

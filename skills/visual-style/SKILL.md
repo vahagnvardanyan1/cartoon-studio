@@ -67,3 +67,40 @@ silently poisons every shot built against it.
 
 Record the style in `canon.md` and the approved keyframe URL in `assets.md`,
 marked as the master reference.
+
+---
+
+## Offer directions as an options sheet, never iterate on one
+
+If the user rejects the style key, do not adjust it and re-run. Generate **the
+same subject in three or four clearly different registers in one pass** and let
+them point at one. The comparison is the deliverable.
+
+Directions worth having ready, each named with real reference points so the
+model has something to aim at:
+
+- **Photoreal live action** — "shot on 65mm, anamorphic, shallow depth of
+  field, natural light only, subtle film grain, restrained cinematic colour
+  grade, real weathered materials, no stylisation of any kind"
+- **Graphic painterly 3D** — the Spider-Verse / *Last Wish* register: ink
+  outlines of varying weight, halftone and brushstroke over the forms, flat
+  blocked colour, hard-edged shadow shapes
+- **Painted-texture 3D** — the *Arcane* register: visible brushwork and canvas
+  grain over dimensional form, no outlines, deep saturated coloured shadows
+- **Flat graphic 2D** — Cartoon Saloon: flat shapes, limited palette,
+  decorative pattern, paper grain, deliberate off-register colour
+
+"Stylised 3D animated feature with soft global illumination" is the default
+that reads as a decade old. Do not offer it as the only option.
+
+## The register decision cascades — re-audit after it changes
+
+Any planned deviation from the main style has to be re-checked when the style
+changes. On *Drop of Honey* a flat illuminated-manuscript sequence worked
+beside stylised 3D and would have shattered beside photography; the fix kept
+the idea and changed the execution to **a real manuscript photographed on the
+same lens**, written portion turned away and out of focus so no lettering
+appears.
+
+A register break should read as a change of **subject**, not a change of
+medium.

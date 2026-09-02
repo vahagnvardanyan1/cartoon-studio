@@ -1,7 +1,7 @@
 {
   "name": "cartoon-studio",
-  "version": "0.2.0",
-  "description": "Produce a professional animated short from any story \u2014 research, visual development, approved reference art, shot planning, clip generation and final assembly, using the Picsart GenAI tools.",
+  "version": "0.3.0",
+  "description": "Produce a professional animated short from any story — research, visual development, approved reference art, shot planning, clip generation and final assembly, using the Picsart GenAI tools.",
   "author": {
     "name": "cartoon-studio"
   },

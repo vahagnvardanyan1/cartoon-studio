@@ -85,3 +85,57 @@ Write `shots.md`, and publish it as an artifact if the session supports it —
 it is a reference document the user will return to throughout generation.
 
 Present it and get approval before rendering anything.
+
+---
+
+## Shot count comes first, and it is not negotiable
+
+Before writing a single shot, compute the count from the runtime. **Average
+shot length of 4.0–4.5 seconds** is the target — see `editing-and-pace.md`
+for why, and for the evidence.
+
+| Runtime | Shots |
+|---|---|
+| 45s | 12–14 |
+| 90s | 20–24 |
+| 3 min | 40–45 |
+
+**No shot containing a face or continuous character motion may exceed six
+seconds.** AI motion loses the viewer at 6–8 seconds — past that they stop
+watching the story and start noticing the machine. Allow yourself exactly one
+exception, at the very end, where the length reads as deliberate.
+
+If the plan comes out at 7 shots for a minute, it is not a pacing preference,
+it is a broken film. Re-plan it.
+
+## Build a descending ladder
+
+Shot length shortens beat by beat through an escalation — roughly 5.5s in the
+setup, 4.5 in the first turn, 3 in the middle, 2.5 at the peak — then breaks
+the pattern once for the ending. Vary lengths **within** each beat too;
+uniform shot length at any tempo is itself an AI-slop tell.
+
+Put one deliberate slow passage inside the fastest beat. It is worth more than
+another round of quick cuts.
+
+## Coverage budget
+
+Per 22 shots: 1 establishing, 5–6 mediums, 6–7 close-ups, 2–3 extreme
+close-ups, 3–4 inserts, and **4–5 dedicated reaction shots**. If fewer than
+four are pure reactions, comedy will underperform — and a reaction close-up is
+also the cheapest and most reliable shot an AI model can produce.
+
+Coverage tightens as stakes rise. Each rung of an escalation is framed closer
+than the one below it.
+
+## Put the cut on a movement
+
+Every swing, throw, fall, door-slam and hand-off should land on a cut. The
+continuity breaks between separately generated clips are large; motion is what
+stops the eye auditing them. Mark the cut point in the shot list.
+
+## Write screen direction into every shot
+
+The model has no memory of your geometry. "Shop on the RIGHT of frame, lane
+running off to the LEFT, he enters from the LEFT" goes in the text of every
+prompt in that location — not just the first.

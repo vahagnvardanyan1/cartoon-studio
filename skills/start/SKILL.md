@@ -144,3 +144,33 @@ continuity marks. Repeat the relevant lines in every prompt, with negatives.
 
 If the working folder already exists, read it and report where the production
 stands before doing anything. Pick up at the first unapproved item.
+
+---
+
+## Research before anything, and research wide
+
+For a story with any cultural specificity, run **three parallel research
+agents** before writing a single prompt. This was the difference between the
+first film and the second.
+
+1. **The primary text.** Full original-language text verbatim, a line-by-line
+   gloss, the exact chain of events, every character and occupation, the
+   closing lines, and the verse form. Tell the agent explicitly not to fill
+   gaps from similar tales — international variants of a folk motif will
+   contaminate the research if you let them.
+2. **The visual world.** Architecture, dress, tools, animals, landscape,
+   season, and any existing adaptations. Demand citations and demand that the
+   agent mark clearly where it is inferring rather than citing.
+3. **The craft.** Current editing practice, generation ratios, model-specific
+   prompt syntax and failure modes.
+
+Two things this caught on *Drop of Honey* that would otherwise have shipped as
+errors: the customer is a **shepherd with a bludgeon**, not a hunter with a
+staff — which changes the first shot's silhouette and the murder weapon — and
+the honey is **not** stored in a կարաս, which is a half-buried wine jar the
+size of a person.
+
+Ask the researchers for the **verse form** as well as the content. The metre of
+*Drop of Honey* drops from eight-syllable lines to four-syllable lines at
+exactly the points where the violence accelerates. The poet had already
+storyboarded the edit; the shot list just had to follow him.

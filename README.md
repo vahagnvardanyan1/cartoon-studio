@@ -76,8 +76,21 @@ turns into something else.
 
 ## Where the hard-won knowledge lives
 
-`references/production-lessons.md` is the important file. It records the
-specific mistakes that ruin AI-generated animation — lifeless shots, characters
-who change size or breed between cuts, props that detach from hands, foreign
-speech turned to gibberish — and exactly how to avoid each one. It was written
-from a real production where every one of those went wrong first.
+Two files carry most of it.
+
+`references/editing-and-pace.md` is where to start. It explains, with numbers,
+why AI-generated films come out boring: seven shots in sixty seconds is an
+8.5-second average shot length, which is 1930s studio pacing, and AI footage is
+worse than live action here because viewers begin noticing the machine at six
+to eight seconds. It gives shot counts by runtime, the descending shot-length
+ladder, the generate-long-cut-short ratios that professionals actually work to,
+a coverage budget, and a checklist of the tells that mark a film as generated.
+
+`references/production-lessons.md` records the specific mistakes that ruin
+AI-generated animation — lifeless shots, characters who change size or breed
+between cuts, props that detach from hands, foreign speech turned to gibberish,
+prompts that delete a man's hair because they described an absence instead of a
+presence — and exactly how to avoid each one.
+
+Both were written from real productions where every one of those went wrong
+first.

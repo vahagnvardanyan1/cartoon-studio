@@ -289,3 +289,91 @@ object.
 clip yourself, say so rather than describing it with borrowed confidence.
 Undeclared blindness is how a wrong character scale, a paw where a hand should
 be, or snow in an autumn scene survives ten more shots before anyone notices.
+
+---
+
+## 12. Prompt failures that delete or exaggerate things
+
+Four faults from the *Drop of Honey* production, all of them mine, all of them
+caught by the user rather than by me.
+
+### Never describe an absence — describe what is there instead
+
+The prompt said **"his head is BARE — no hat, no cap, nothing covering his
+hair."** The model made him **bald**. Naming an absence invites the model to
+remove what sits underneath it too.
+
+Write it positively: *"no hat, and a full head of thick dark hair cut short and
+going grey at the temples, plus a short grey-flecked beard. Not bald, not
+shaven."* The two negations at the end are safe **because the positive
+description came first.**
+
+Same class of error: "empty room", "featureless wall", "nothing on the table."
+Say what *is* there.
+
+### Never let a prop trail, drip, spill or emit
+
+The prompt said the honey ladle was **"still trailing a thread of amber honey
+off its end."** The model poured a bucket of honey over the dog.
+
+If a detail *can* be exaggerated, it will be. When a substance is present but
+must stay minor, either drop it from that frame entirely or forbid it
+explicitly: *"the ladle is dry and empty — no honey on it, nothing pouring, no
+honey anywhere in this frame."*
+
+### Costume drift starts at the character sheet — check there first
+
+The shopkeeper's hat came back wrong in four consecutive shots, as three
+different hats. The cause was **the character sheet itself**, which had
+rendered a brimmed felt hat instead of a low sheepskin papakh. Every shot
+inherited it.
+
+When a detail drifts in more than one shot, **stop generating shots and go look
+at the reference.** Rebuilding one sheet and five frames is cheaper than
+discovering it at assembly.
+
+And when a costume element keeps failing, consider **removing it**. Making the
+shopkeeper bare-headed killed the whole class of drift permanently — and had a
+bonus: only one character wore the papakh, so the two men were instantly
+distinguishable in every two-shot. A constraint that solves a problem *and*
+improves the design is not a compromise.
+
+### You cannot see the images — verify them anyway
+
+The container cannot reach the Picsart CDN, so `Read` will not open a generated
+image. **Use `picsart_media_contact_sheet`.** Build a throwaway scene with the
+images as one-second layers and sample a frame per second:
+
+```
+composition 1376x768, one layer per image, fit "contain", 1s each
+times: [0.5, 1.5, 2.5, 3.5]
+```
+
+Up to eight come back as inline images you can actually look at. Do this after
+every batch. Every fault in that production was visible in a contact sheet and
+would have been caught a batch earlier if I had run one.
+
+---
+
+## 13. Register decisions cascade
+
+The film was replanned from stylised 3D to photoreal after the user rejected
+the first style key. That single change invalidated a downstream decision that
+had nothing obviously to do with it: the two kings were to be rendered as a
+**flat illuminated manuscript**, which works beside stylised 3D and shatters
+beside photography.
+
+The fix kept the idea and changed the execution — the manuscripts became **real
+vellum objects photographed on the same lens**, gold leaf catching a raking
+light, the written portion turned away and thrown out of focus so no lettering
+appears. Same camera throughout; the register change reads as a change of
+*subject*, not of medium.
+
+**When the style register changes, re-audit every planned deviation from it.**
+
+### Offer style directions as an options sheet
+
+Do not iterate on one style key. When the user rejects a look, generate the
+**same subject in three or four clearly different registers in one pass** and
+let them point. The comparison is the deliverable. Iterating one at a time is
+slower and produces worse agreement.

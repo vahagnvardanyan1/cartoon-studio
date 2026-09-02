@@ -95,3 +95,88 @@ For a three-minute film of ~22 shots, budget approximately:
 
 Preflight the actual numbers for the models you pick, and tell the user the
 total before you start spending.
+
+---
+
+## Video audio — two different tools, do not confuse them
+
+### Non-dialogue shots: let Seedance generate the sound
+
+`generateAudio: true` on Seedance produces sound **synchronised to the motion
+it actually rendered** — the bark lands on the lunge, the dust lands on the
+feet, the crackle follows the real flame. This beats a separately generated
+effects bed, which always needs manual sync and never fits as well.
+
+Describe the sound explicitly in the prompt, in its own block, or the model
+invents music and modern noise:
+
+```
+SOUND: one hard deep bark, a low guttural growl, heavy claws scrabbling in
+dry grit, the thud of body weight hitting the ground, then abrupt silence
+with only a dry wind and distant sheep bells. No music. No human voices.
+```
+
+Always say what must **not** be there. "No music" is worth including every time.
+
+> **`generateAudio` defaults to `true`.** If a clip must be silent, turn it off
+> by hand. This is the opposite of what the earlier version of this file said.
+
+### Dialogue shots: OmniHuman, never Seedance reference audio
+
+Seedance's `audioUrls` slot treats a supplied track as a **style reference and
+re-synthesises it.** Feed it Armenian and you get something with Armenian
+prosody and no Armenian words. This destroyed a whole film's dialogue once.
+
+**`bytedance-omnihuman-v1.5`** takes a portrait image plus a real audio track
+and animates the face to it. The audio passes through untouched, so the
+language survives exactly as recorded.
+
+```
+model: bytedance-omnihuman-v1.5
+extra: { imageUrls: [<one portrait>], audioUrl: <the real speech track> }
+```
+
+Constraints found in practice:
+- **One portrait only.** A two-shot with both characters speaking cannot go
+  through it — that shot stays Seedance mouth-movement with the dialogue laid
+  under it in the edit.
+- Output came back **1920×1088 at 25fps** while Seedance clips were 864×496 at
+  24fps. The compositor handles the mismatch with `fit: "cover"`; just declare
+  the real dimensions on the asset.
+- It is **slow** — several minutes, and it sits at 99% for a long time. Fire it
+  early and do other work while it runs.
+- `kling-avatar` is the alternative but has burned garbled subtitles into the
+  picture in past runs. Prefer OmniHuman.
+
+---
+
+## Seedance 2.0 parameters, verified
+
+| Param | Values |
+|---|---|
+| `duration` | any whole number **4–15** |
+| `resolution` | 480p, 720p, 1080p, 4k |
+| `aspectRatio` | 16:9, 9:16, 1:1, 4:3, 3:4, 21:9, adaptive |
+| `generateAudio` | **defaults true** |
+| `startFrame` / `endFrame` | one image each |
+| `imageUrls` | up to 9 reference images |
+| `returnLastFrame` | gives you the true last frame for chaining |
+
+**Frames and reference media are mutually exclusive.** Give it start/end frames
+*or* reference images, never both — it errors.
+
+---
+
+## Operational failures to expect
+
+- **The MCP call times out at 60s on image generation** even though the job
+  succeeded or failed server-side. Retry the prompt; roughly one call in six
+  timed out across ~60 image generations.
+- **Occasional `image_url ... timeout while fetching resource`** on a video job
+  whose start frame lives on the CDN. Re-fire the same job; it usually works
+  the second time.
+- **Video generation is async by default.** You get a job handle. A 5–8 second
+  480p clip takes roughly 2–4 minutes. Fire a whole beat at once, then poll.
+- **`picsart_media_probe_media` cannot read MP3 duration.** Estimate from bytes
+  at 128 kbps (`bytes × 8 ÷ 128000`), which has matched the displayed length
+  every time, and give audio tracks a little headroom in the scene.
