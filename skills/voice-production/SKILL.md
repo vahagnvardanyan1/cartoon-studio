@@ -30,6 +30,49 @@ you onto a model with a tighter character limit and more hallucination.
 Check the **cloning** language list separately; it often follows a different
 model's roster than synthesis does.
 
+## 2b. Normalise the text with a language model before recording
+
+**Do this for every line in a non-English language, and always when the source
+is old.** A 1909 text, a dialect text, or anything with archaic orthography
+will read badly aloud and will be actively mispronounced by TTS. Fidelity to
+the printed spelling is a virtue on the page and a defect on a soundtrack.
+
+Send the lines to a text model with `picsart_generate` — `gpt-5.5`,
+`claude-opus-4-8` and `gemini-3-pro` are all in the catalogue under
+`mode: "text"`.
+
+Three things make the difference between a useful pass and a useless one:
+
+1. **Give it a worked before/after pair** showing exactly the standard you
+   want. One example teaches it more than a paragraph of instruction. If the
+   user has corrected a line themselves, that correction *is* the example —
+   use it verbatim in the prompt.
+2. **Say explicitly that it need not be verbatim.** Meaning and register
+   matter; the original spelling does not. Name the register you want kept:
+   "the narrator is a village storyteller; the shouted lines stay raw and
+   colloquial."
+3. **Ask for the corrected text only** — a numbered list, no commentary, no
+   transliteration, no English. Otherwise you spend the next step unpicking it.
+
+### It catches errors, not only style
+
+On the *Drop of Honey* production this pass corrected 1909 Lori dialect into
+modern Eastern Armenian — `Մեղր են քաշում. մին էլ հանկարծ` became
+`Մեղր էին քաշում, մեկ էլ հանկարծ` — and separately caught a straightforward
+mistake: the wrong word for an axe, `ցաքատ` where it should have been `կացին`.
+That was in the shot list, the narration and a prompt, and nobody had noticed.
+
+### The model is a first pass, not the authority
+
+**Show the corrected lines to the user before recording anything.** They are
+the check on the language model, not the other way round. Print the before and
+after side by side so the changes are visible at a glance, and ask directly
+whether any of them are still wrong.
+
+This step happens **after** the lines are written and **before** a single take
+is generated. Re-recording fifteen cues because the text was wrong is the most
+avoidable rework in this whole pipeline.
+
 ## 3. Audition, and let a native speaker choose
 
 Never cast from a benchmark leaderboard — those measure short neutral

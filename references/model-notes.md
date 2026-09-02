@@ -20,6 +20,13 @@ What follows is the shape of the pipeline and the constraints that bit us.
 | Sound effects | A dedicated SFX model, typically short clips |
 | Final render | The media compositor (`picsart_media_*`) |
 
+**Text / language work.** The catalogue has LLMs under `mode: "text"` —
+`gpt-5.5`, `claude-opus-4-8`, `claude-sonnet-4-6`, `gemini-3-pro` and the
+Gemini Flash tiers. Reach for one to **normalise non-English narration and
+dialogue before recording it** (see `voice-and-audio.md`), and to sanity-check
+any culturally specific term before it reaches a prompt. Keep batches to eight
+or ten lines — longer prompts have timed out at the MCP call's 60-second limit.
+
 ## Hard constraints learned the hard way
 
 **Reference image payload cap.** Passing several high-resolution reference

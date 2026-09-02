@@ -363,3 +363,62 @@ Honey* the same fly buzzes on the honey drop at 31 seconds and on the dried
 stain at 104 — the first under a warm village bed with sheep bells, the second
 over nothing but dead wind. The audience hears the difference before noticing
 it.
+
+---
+
+## Normalise non-English text with a language model first
+
+The Picsart catalogue carries text models under `mode: "text"` — `gpt-5.5`,
+`claude-opus-4-8`, `gemini-3-pro` and the Gemini Flash tiers. Call them the
+same way as any other model, with `picsart_generate`.
+
+**Every non-English line goes through one before it is recorded**, and it is
+mandatory when the source is old or dialectal.
+
+### Why
+
+A folk tale worth adapting is usually a century old, and its printed text is
+full of things that belong to the page rather than the mouth: archaic
+orthography, dialect forms, and metrical marks. Armenian is a clear case —
+Tumanyan's 1909 text writes the schwa explicitly (`գընում`, `ըսպանեցին`,
+`շըպըրտում`) to fill the syllable count. Preserving that spelling is correct
+for a printed edition and wrong for a soundtrack: the TTS fights it and a
+native speaker hears something stilted.
+
+**Fidelity to the source spelling is not a virtue in a recording.** Meaning and
+register are.
+
+### How to prompt it
+
+```
+Rewrite these lines from <source dialect/period> into clean, natural, modern
+<language> that a native speaker finds correct and that TTS pronounces
+properly. Keep meaning and imagery. It need NOT be verbatim. Keep the register:
+<who is speaking, and how>.
+
+Example of the exact standard wanted:
+BEFORE: <one original line>
+AFTER:  <the corrected version>
+
+Return ONLY a numbered list of corrected <language>. No commentary, no English.
+```
+
+The **worked before/after pair carries almost all the weight.** If the user has
+already corrected one line themselves, that correction is the example — paste
+it in verbatim and the model matches the standard for the rest.
+
+Keep the batch to eight or ten lines. A longer prompt timed out at 60 seconds
+on the MCP call more than once.
+
+### It finds real errors
+
+This is not only a style pass. On *Drop of Honey* it caught `ցաքատ` where the
+word should have been `կացին` — an actual wrong word that had propagated into
+the shot list, the narration and an image prompt without anyone noticing.
+
+### The user is the authority, not the model
+
+Print the before and after side by side, show it, and ask whether anything is
+still wrong **before** recording. The language model is a first pass over text
+in a language you may not read. It is not the final word, and presenting it as
+one is how a confident error reaches the finished film.
