@@ -40,9 +40,25 @@ vegetation.
 ## Continuity marks — do this deliberately
 
 For each main character, choose **one unmistakable identifying detail** that
-appears in every shot: a scar, a notched ear, a single strong colour accent.
+appears in every shot — and **make it asymmetric.** A scar over the *right*
+eyebrow. A glove on the *left* hand only. A satchel on one shoulder, a patch on
+one knee, one rolled sleeve, a notch in one ear.
+
+Asymmetry is the whole point, for two reasons and the second is the real one:
+
+1. It gives the model a hard landmark to preserve, and identity drift is worst
+   for characters described only in symmetrical terms.
+2. **It converts drift from a judgement into a binary check.** "The face looks
+   a bit off" is unfalsifiable and gets waved through. "The scar is on the left
+   in shot 7 and the right in shot 4" is objectively wrong, visible in a
+   contact sheet, and impossible to argue with.
+
+A mirrored mark is also a *diagnosis*: it means the model flipped the frame,
+which means the screen direction went with it.
+
 For each hero prop, choose a **distinctive marking** so the audience recognises
-the same object and you can tell when the model has swapped it.
+the same object and you can tell when the model has swapped it. Asymmetric
+there too — a chip on one rim, a repair on one side.
 
 Also decide and record:
 

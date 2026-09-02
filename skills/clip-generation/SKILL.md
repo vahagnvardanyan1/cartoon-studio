@@ -84,10 +84,27 @@ Submit asynchronously and poll.
 
 Structure the prompt as **state, then instruction**:
 
-- **State** — paste the identity string from `canon.md` byte-identical; declare
-  what each character wears and holds, the continuity from the previous shot,
-  and the geometric staging. Be as verbose as needed; the model has no memory
-  of anything, and facts do not compete for adherence the way requirements do.
+- **State** — declare what each character wears and holds, the continuity from
+  the previous shot, and the geometric staging. Be as verbose as needed; the
+  model has no memory of anything, and facts do not compete for adherence the
+  way requirements do.
+
+  **But do not re-describe a face that is already in an attached reference.**
+  This is the rule that flips between modes and it is the most commonly
+  got-wrong thing in the pipeline. Under text-to-image with no reference, the
+  verbatim identity string is the only continuity carrier — paste it
+  byte-identical. Under image-to-image or image-to-video *with the sheet
+  attached*, a written description of the face **competes with the reference
+  and pulls the result toward a new, generic, beautified face.** Describe pose,
+  framing, expression, lighting and what the hands hold; refer to the person as
+  "the man from @Image1" and append the identity lock list. See
+  `prompt-templates.md` §7b — nearly every shot in a film is built in the
+  second mode, and the natural thing to write is the wrong thing.
+
+  **Give every reference an explicit role** — `@Image1's character as the
+  subject, scene references @Image2, reference @Image4 for lighting
+  continuity`. A bare "reference @Image1" brings its lighting, its framing and
+  its pacing along with whatever you actually wanted. See §7c.
 - **Instruction** — the active creative payload, **100–150 words**,
   front-loaded, in the nine-element order. Timed beats. One camera move with a
   speed word. Motion written as consequence, not mechanism.
@@ -122,9 +139,14 @@ usable seconds.
 
 Sample frames through the media tooling and look at them.
 
-Score against the character sheet, 0–10 on six checks: **face shape · hair
+Score against the character sheet, 0–10 on seven checks: **face shape · hair
 length and parting · eye colour · wardrobe hue · the continuity mark · body
-proportions under motion.**
+proportions under motion · and the asymmetric mark, on the correct side.**
+
+The asymmetric mark is the one that makes this audit real. "The face looks a
+bit off" gets waved through; "the scar is on the left in this shot and the
+right in shot 4" does not. A mirrored mark is also a diagnosis — the model
+flipped the frame, and the screen direction almost certainly went with it.
 
 **Accept at 7. Below 6, regenerate changing exactly one variable** — not the
 whole prompt, which throws away the information about what was working.
@@ -259,3 +281,34 @@ frames and name what went wrong rather than rerolling and hoping. Say plainly
 when you have not been able to view something yourself.
 
 Record every approved clip URL, with its duration, in `shots.md`.
+
+---
+
+## Failure modes
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| A new, generic, prettier face | the prompt re-described a face that was already in an attached reference | describe pose and light only; add the identity lock list |
+| Mirrored continuity mark | the model flipped the frame | regenerate; check the screen direction went with it |
+| Character floats, no weight | keyframe had no contact shadow | rebuild the keyframe with occlusion at the contact points |
+| Prop detaches from the hand | keyframe showed the wrong state | keyframe must show the instant beat one begins from |
+| Mouths closed while dialogue plays | dialogue sent to a general video model | lip-sync model, real audio, one portrait |
+| Everything in slow motion | no motion specificity, so the model took the safe route | speed-encode the verb; add environmental consequence |
+| Half the instructions ignored | too many active requirements | cut to 100–150 words, front-load |
+| Random ambient sound that fits nothing | native audio on, no audio directive written | always write the SOUND block, even one sentence |
+
+## Done criteria
+
+The shot is finished when all of these are true — machine-checkable, not
+"it looks good":
+
+1. The clip URL is recorded in `shots.md` with its duration.
+2. You have looked at sampled frames yourself and said so.
+3. The drift audit scored 7 or above on all seven checks.
+4. The camera block in `shots.md` matches what is actually on screen — size,
+   height, move, light direction, screen direction.
+5. The clip was generated longer than the cut needs.
+6. It has been handed to `shot-loop` to be cut with its audio, and the user
+   approved *that*, not the bare clip.
+
+If any is false, the shot is not done. Say which one rather than moving on.

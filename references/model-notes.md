@@ -188,3 +188,40 @@ Constraints found in practice:
 - **`picsart_media_probe_media` cannot read MP3 duration.** Estimate from bytes
   at 128 kbps (`bytes × 8 ÷ 128000`), which has matched the displayed length
   every time, and give audio tracks a little headroom in the scene.
+
+---
+
+## Cache the model capabilities as data, once per production
+
+Model constraints written as prose in a skill go stale and cannot be checked.
+Cache them as a table in `canon.md` at the start of the production, built from
+`picsart_model_params` and `picsart_model_catalog` rather than from memory.
+
+Per model, record:
+
+| Field | Why |
+|---|---|
+| `endpoint` | the id you actually call |
+| `mode` | t2i · i2i · t2v · i2v · lipsync · tts · music · text |
+| `aspect_ratios` | as an **enum** — a wrong value is a 400, not a warning |
+| `duration` | **enum or range, and say which.** `[5,10,15]` and `4–15` are different things and confusing them is a rejected call |
+| `resolution` | with exact casing. `2K` and `2k` are not interchangeable on every endpoint |
+| `max_reference_images` | and whether references are mutually exclusive with start/end frames |
+| `negative_field` | **yes / no / inverts.** Three states, not two — some models render a bare negative list as subject matter, and a few actively invert it |
+| `native_audio` | and **what the default is**. On some models it is on unless disabled |
+| `cost_per_call` | preflighted, not guessed |
+| `honours_speech_input` | whether supplied audio plays through or gets re-synthesised. This is the one that destroys a non-English film |
+
+The last four are the ones no vendor catalogue gives you and every one of them
+has cost a day on some production.
+
+**Then build payloads from the capability table rather than branching per
+model:** read the parameter list, send only what the model accepts. One caller
+works across the whole catalogue and a new model needs no new code path.
+
+**Preflight the shot list against the table before spending anything.** A
+duration of 7 against an enum of `[5,10,15]`, an aspect ratio the model does
+not support, or ten references against a maximum of nine — all of these are
+catchable for free at planning time and cost a round trip each at generation
+time.
+

@@ -206,6 +206,143 @@ style stage, and never paraphrase it.
 
 ---
 
+## 7b. Identity: the rule flips between text-to-image and image-to-image
+
+**This is the most commonly-got-wrong thing in the whole pipeline, and the two
+halves of it contradict each other.**
+
+### Text-to-image, no reference attached
+
+The verbatim identity string is the *only* thing carrying continuity. Paste it
+byte-identical into every prompt. Any rewording is read as a new character.
+
+### Image-to-image / edit / any call with a reference image attached
+
+**Do not re-describe the person.** A written description of a face competes with
+the reference and pulls the result toward a new face — a generic, beautified,
+averaged one. Identity comes from the reference image *only*.
+
+```
+❌  "a man in his forties with thick dark hair greying at the temples
+     and a short dark beard, standing at the counter"
+✅  "the man from reference image 1, standing at the counter, three-quarter
+     to camera, lit from the window camera-left"
+```
+
+**What you are still allowed to describe:** head orientation · facial angle ·
+expression · lighting direction · framing · pose · what he is holding ·
+where he is. **What you must not describe:** age · build · hair · beard ·
+colouring · face shape — every attribute already visible in the reference.
+
+Append the lock list instead:
+
+```
+Preserve the exact facial identity from the reference image.
+Do not modify eye shape or spacing, nose structure, jawline, cheekbones,
+or face proportions. Identity must remain identical to the reference.
+```
+
+And the negatives that target this specific failure:
+
+```
+different person · altered face · changed facial features · new identity ·
+generic face · beautified face · plastic skin · face distortion
+```
+
+**Identity preservation outranks style.** If the two conflict, keep the face.
+
+### Which one applies where in this pipeline
+
+| Stage | Mode | Rule |
+|---|---|---|
+| Character sheet | t2i | verbatim identity string |
+| Scale sheet | t2i | verbatim identity strings for all leads |
+| Environment plate | t2i | no characters at all |
+| **Shot keyframe** | **i2i, sheets attached** | **pose, framing and light only. Never the face** |
+| Clip | i2v, keyframe attached | motion only — do not re-describe anything already in the frame |
+| Lip-sync | portrait attached | who speaks, blinks, gestures. Never the face |
+
+Most of the film is built in the right-hand mode. The natural thing to write is
+the wrong thing.
+
+---
+
+## 7c. Give every reference an explicit role
+
+Passing several references without saying what each is *for* is a documented
+failure mode: the model averages them, or takes lighting from the one you
+wanted only motion from. Name the job inline.
+
+| Purpose | Phrasing |
+|---|---|
+| First frame | `@Image1 as the first frame` |
+| Last frame | `@Image2 as the last frame` |
+| Character identity | `@Image1's character as the subject` |
+| Scene / background | `scene references @Image3` |
+| Wardrobe | `wearing the outfit from @Image2` |
+| Camera movement | `reference @Video1's camera movement` |
+| Action / choreography | `reference @Video1's action choreography` |
+| Rhythm / tempo | `video rhythm references @Video1` |
+| Prop appearance | `prop details reference @Image4` |
+
+Combined:
+
+```
+@Image1's character as the subject, scene references @Image2,
+reference @Video1's camera movement only
+```
+
+**Never write a bare "reference @Video1."** Specify *what* to reference —
+camera, action, effects, rhythm — or it brings all of them.
+
+A fixed convention for this pipeline, so prompts stay legible across a
+production:
+
+```
+@Image1  identity anchor      the character sheet
+@Image2  environment plate    geometry, light, screen direction
+@Image3  style / scale        the style key or the scale sheet
+@Image4  continuity           the previous shot's final frame
+```
+
+And an explicit consistency block inside the prompt when a shot has more than
+one character or crosses a cut:
+
+```
+CONSISTENCY RULES
+- Same character throughout — the face of @Image1 in every frame
+- Same wardrobe across the entire shot
+- Same environment and light direction as @Image2
+- Asymmetric marks on the correct side
+```
+
+---
+
+## 7d. Asymmetric continuity marks
+
+Give every character at least one **asymmetric** identifying detail: a scar
+over the *right* eyebrow, a glove on the *left* hand only, a satchel on one
+shoulder, a patch on one knee, one rolled sleeve.
+
+Two reasons, and the second is the real one:
+
+1. Asymmetry gives the model a hard landmark to preserve, and identity drift
+   between shots is the most commonly reported failure when characters are
+   described only symmetrically.
+2. **It converts drift from a judgement into a binary check.** "The face looks
+   a bit off" is unfalsifiable and gets waved through. "The scar is on the left
+   in shot 7 and the right in shot 4" is objectively wrong, catchable in a
+   contact sheet, and impossible to argue with.
+
+Write it into the character sheet, into the identity string, and into the
+drift audit. Add `Asymmetric identifying details preserved on the correct side`
+to keyframe prompts.
+
+A mirrored mark is also a *diagnosis*: it means the model flipped the frame,
+which usually means the screen direction went with it.
+
+---
+
 ## 8. Templates
 
 ### Character sheet (turnaround)

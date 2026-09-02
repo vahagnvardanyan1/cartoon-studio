@@ -37,6 +37,32 @@ reads as deliberate.
 If the plan comes out at seven shots for a minute, that is not a pacing
 preference. It is a broken film. Re-plan it.
 
+### The single-beat rule
+
+**One action beat per 4–7 seconds of shot. A 10–15 second shot carries three
+or four beats, maximum.**
+
+Overloading a shot with several narrative changes degrades the output
+measurably — multiple scene changes inside four seconds produce broken physics
+and motion artefacts. This is a hard planning constraint, not a style
+preference:
+
+```
+beats = floor(duration / 4), capped at 4
+```
+
+If a shot as written needs more beats than that, it is not one shot. Split it.
+This single check prevents a whole class of mushy generation, and it is
+cheapest to apply here, before anything is rendered.
+
+Write the beats into the shot as timed spans, because that is also the format
+the generation prompt takes:
+
+```
+0-2s  <verb + physical consequence + micro-expression>
+2-4s  <verb + physical consequence + micro-expression>
+```
+
 ### The descending ladder
 
 Shot length shortens beat by beat through an escalation — roughly 5.5s in the
@@ -227,3 +253,74 @@ different generation paths, and the count of each determines the budget.
 Write the prompts to `${CLAUDE_PLUGIN_ROOT}/references/prompt-templates.md`:
 nine elements in order, 100–150 words of active payload, timed beats, one
 camera move with a speed word, motion as consequence, 3–5 specific negatives.
+
+---
+
+## Consider a storyboard grid for dense action
+
+For a montage, a fight, a chase or any passage where **tension comes from cut
+density rather than from any single shot**, there is a second route worth
+knowing.
+
+Instead of planning sixteen shots as text and generating sixteen clips,
+generate **one image**: a 4×4 grid of numbered panels, each labelled with its
+shot size, its camera move and a one-word rhythm note. Then hand that grid to
+the video model as the reference and ask it to follow the cells in order.
+
+```
+Compose a 4x4 storyboard grid (16 numbered cells) for this sequence: <action>
+
+CHARACTER: use @Image1's identity throughout, asymmetric details preserved on
+the correct side.
+LOCATION: use @Image2's spatial layout.
+
+Each cell labels: SHOT # (1-16) · SIZE (WIDE / MS / CU / ECU) · CAMERA-MOVE
+arrow (push, pull, whip, dolly, crash-zoom, handheld) · one-word RHYTHM note
+(BEAT / IMPACT / RECOVERY / RESET).
+
+Vary shot size aggressively — never two WIDEs in a row. Land every IMPACT on
+a CU or ECU. Numbered cells, clear gutters between panels.
+```
+
+The claim behind it is worth testing on your model before relying on it: a
+video model anchors its motion plan to the visual reference, so a grid of
+sixteen drawn cells gives it sixteen visual targets, whereas **text
+descriptions of shots get averaged into mush.**
+
+Three things make this worth the trouble even if you do not generate from it:
+
+- **The grid is a far better approval artifact than a text shot list.** The
+  user can see the cut density and the shot-size variation at a glance. Render
+  it at 3840×2160 or the panels blur and neither the model nor the user can
+  read them.
+- **Repair is cheap and targeted.** If one panel reads badly, regenerate the
+  grid with that cell's note emphasised — not the video.
+- **It enforces the rule it states.** "Never two WIDEs in a row" and "land
+  every IMPACT on a CU" are visible in a grid and invisible in a list.
+
+For longer sequences, chain two grids and **put the last cell of grid A into
+the first cell of grid B as a continuity anchor.**
+
+Do not use this for dialogue, for anything needing lip-sync, or for a beat
+whose whole point is one sustained shot.
+
+---
+
+## Done criteria
+
+The shot list is finished when:
+
+1. Every shot has a complete camera block with no blanks.
+2. Every shot has a one-sentence JOB.
+3. Every beat has a named value shift, and no two consecutive beats flip the
+   same value in the same direction.
+4. Shot count matches the runtime target and the average shot length is 4.0–4.5s.
+5. No shot carrying a face exceeds six seconds, except at most one at the end.
+6. No shot exceeds `floor(duration / 4)` beats, capped at 4.
+7. No two-shot has two speakers in it.
+8. Every shot names the movement its outgoing cut lands on.
+9. The coverage budget is met, including four or more pure reaction shots.
+10. Every location has its axis of action and light direction declared.
+
+If any is false, say which. A shot list that fails one of these produces a film
+that fails in a way nobody can point at afterwards.

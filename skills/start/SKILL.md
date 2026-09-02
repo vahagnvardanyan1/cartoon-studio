@@ -158,7 +158,26 @@ Wait for approval before stage 3.
 
 **One thing at a time.** Generate one asset or one clip, present it, wait.
 Never batch through an approval gate. Never proceed automatically after
-submitting something for review.
+submitting something for review. When you reach a gate, **end your turn** —
+do not ask a question and keep working underneath it.
+
+**Put the gate at the cheap/expensive boundary, and say that is where it is.**
+Explore wide and cheap, stop, let the user pick, then commit expensively on the
+one they picked. A gate placed after the expensive call is not a gate.
+
+**Enumerate the choices when you stop.** "Which of these four?" with the four
+named beats "what do you think?" — the user should be able to answer with one
+word.
+
+**Set a per-call cost ceiling and honour it inside the loop.** Agree a number
+with the user at the plan stage — the cost of a single generation above which
+you stop and ask rather than proceeding. A budget estimated up front is not the
+same as a gate that fires on the one expensive call in the middle of a run.
+
+**Never pad to hit a number.** If the story yields eleven beats and the plan
+said twelve, deliver eleven and say so. If a search returns three usable
+references and you asked for five, return three. Padding is how weak material
+ends up being the thing people judge the film on.
 
 **Inspect your own output.** Before presenting any image or clip, look at it —
 sample frames through the media tooling and check them. Report what is wrong

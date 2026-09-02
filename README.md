@@ -41,6 +41,7 @@ Say **/start** and name your story. For example:
 | `/film-status` | Where the production stands, what's blocked, what's stale |
 | `/redo-shot` | Diagnoses and fixes one bad shot or asset |
 | `/film-budget` | Checks credits and prices the work before you spend |
+| `/film-cutdown` | Cuts a trailer, teaser or vertical edit from the finished film |
 
 ## What you need
 

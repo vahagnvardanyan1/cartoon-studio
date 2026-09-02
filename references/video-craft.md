@@ -323,6 +323,15 @@ Score every generated shot against the character sheet, 0–10 on six checks:
 4. wardrobe hue
 5. the distinguishing detail — the scar, the earring, the continuity mark
 6. body proportions under motion
+7. **the asymmetric mark, on the correct side**
+
+Check 7 is the one that makes the audit real, and it is why every character
+should be given an asymmetric detail by construction — a scar over one
+eyebrow, a glove on one hand, a satchel on one shoulder. A symmetrical
+character can only drift *vaguely*, and vague drift gets waved through. A
+mirrored scar is objectively wrong, visible in a contact sheet, and impossible
+to argue with. It is also a diagnosis: a flipped mark means the model mirrored
+the frame, and the screen direction went with it.
 
 **Accept at 7. Below 6, regenerate changing one variable — not the whole
 prompt.** Rewriting the whole prompt loses the information about what was
