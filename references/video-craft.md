@@ -348,14 +348,27 @@ Plan against these. They are the difference between a budget and a hope.
 
 | Situation | Generations per usable shot |
 |---|---|
-| Controlled, reference-anchored, storyboarded | **~3**, ~25% selection rate |
-| Hard shots — complex staging, multiple characters | **~10** |
-| Uncontrolled, comedic, dialogue-heavy text-to-video | **~20** (~5% hit rate) |
+| Simple, controlled, reference-anchored — landscapes, inserts, plates | **3–7** |
+| Ordinary narrative shots with a character in them | **~20** |
+| Hard shots — dialogue, complex staging, several characters | **20–65** |
 
-Documented productions, for scale: a three-minute episode ran **164 clips
-generated to 41 in the final cut**; a national-broadcast advert ran **300–400
-generations to 15 usable clips**; a ninety-second short took roughly 400
-generations.
+**Nobody credible works under about 7:1, and character-driven narrative work
+runs 20–65:1.** Documented productions, across very different scales:
+
+| Production | Generated → used | Ratio |
+|---|---|---|
+| 95-minute feature, first 25-minute segment | 16,181 → 253 | **64:1** |
+| National broadcast advert | 300–400 → 15 | **~20:1** |
+| Commissioned music video | 700 → 55 | **12.7:1** |
+| 45-second trailer | 310 → 44 | **7:1** |
+| One 90-second dialogue scene | ~150 generations | — |
+
+**Budget the aggregate across the film, never the per-shot number**, and tell
+the user the real figure at the plan stage. A production planned at three
+attempts per shot runs out of credits around shot nine, and the user will
+reasonably think something has gone wrong.
+
+See `creator-practice.md` §1 for the sourcing.
 
 **Over 40% of finished shots on documented productions are stitched from two or
 more generations.** Treat composite shots as normal, not as failure.

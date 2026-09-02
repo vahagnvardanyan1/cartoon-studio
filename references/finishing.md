@@ -34,7 +34,25 @@ The order is not arbitrary and getting it wrong wastes the work.
 
 ---
 
-## 2. Upscale first, before grading
+## 2. Upscale — first, if at all
+
+**This is a genuine disagreement in the field and you should name it rather
+than defaulting silently.**
+
+One camp upscales as standard and a major AI film school teaches it. The other
+refuses it outright: upscaling **exaggerates artefacts, oversharpens, and
+corrupts the aesthetic** you spent the whole production building. One
+feature-scale creator does not upscale at all, on the grounds that the source
+images already carry the look and an upscaler will damage it.
+
+Related, and counterintuitive: **the highest resolution setting is not always
+the best one.** One practitioner's finding on his image model — *2K keeps the
+film grain; 4K is "too smooth" and "not that cinematic yet."* Test the tier
+rather than assuming the top one wins.
+
+Ask the user, or test one shot both ways and show them. If you do upscale:
+
+## 2b. Upscale before grading
 
 Two reasons, both mechanical:
 
@@ -72,6 +90,19 @@ The fix is at the grade, not the prompt.
 A film LUT on its own node — Kodak 2383, Fuji 3510, or an Arri LogC-to-Rec709 —
 at **60–80% opacity**. Do not bake it. Drive it with lift/gamma/gain so it
 stays adjustable per scene.
+
+### Never ask the model for grain
+
+**Grain requested in a prompt is baked into the pixels.** It will not survive
+an upscale, it fights every subsequent grade, and it cannot be adjusted or
+removed. The same is true of asking for "film look", halation, or vignetting.
+
+Generate clean. Add all of it here.
+
+Prefer **scanned grain plates over synthetic grain**, laid in Overlay or Soft
+Light. Synthetic grain is uniform; real grain has structure, and the difference
+is visible at exactly the moment you are trying to convince someone the image
+was photographed.
 
 ### Pass 3 — blur, then grain. In that order.
 

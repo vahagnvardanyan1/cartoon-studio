@@ -50,7 +50,39 @@ five at random, but a prompt carrying eight *facts* is fine.
 
 **Every prompt is fully self-contained.** Re-describe the setting, the
 character and the tone in every one. Assume zero context from adjacent shots,
-because there is none.
+because there is none. As one agency practitioner puts it: *"each prompt should
+fully describe the scene as if the model has no context of the shot before or
+after it."*
+
+### The apparent contradiction, resolved
+
+A published feature production runs prompts with a **median length of about
+16,500 characters — roughly 3,000 words.** That looks like it breaks the
+100–150 word rule. It does not, and understanding why is the point.
+
+Their seven sections:
+
+| | Section | Kind |
+|---|---|---|
+| 1 | **Character current state** — injuries, clothing, expression, what changed | state |
+| 2 | **Scene continuation context** — what just happened | state |
+| 3 | **Shot intent** — the director's note; what this shot is for | **payload** |
+| 4 | **Geometry and staging** — positions, distances, who faces where | state |
+| 5 | **Dialogue and sound** | state |
+| 6 | **Action, in six beats** for a fifteen-second shot | **payload** |
+| 7 | **Key rules and prohibitions** | state |
+
+Only 3 and 6 are active creative instruction, and those stay short. The rest
+are **facts, and facts do not compete for adherence the way requirements do.**
+
+**Keep active instructions few. Keep state complete.** A 3,000-word prompt is
+obeying that rule, not breaking it — and a 3,000-word prompt made of
+*instructions* would be far worse than a 150-word one.
+
+One named failure of this structure worth knowing: **"prompt fatigue"** — a
+character reacting in the wrong emotional register because section 1
+underspecified their state. The model did not fail; the prompt forgot to say
+he was already bleeding.
 
 ---
 
@@ -134,6 +166,14 @@ each with its own verb and consequence:
 Without this, a model given one vague action and eight seconds will idle for
 six of them.
 
+A feature production uses **six beats for a fifteen-second shot** — roughly one
+every two and a half seconds. The purpose is stated plainly: it stops the model
+compressing or speeding up the performance.
+
+**Do not crowd dialogue.** *"If the dialogue is too crowded in a single prompt,
+the AI tends to speed up the performance, leading to slop-like movements."*
+Write deliberate pauses between lines, as beats of their own.
+
 ### Fixing the slow-motion bias
 
 Models default to slow because minimising pixel change per frame is the safest
@@ -196,8 +236,14 @@ A worked example of the shape:
 ```
 8K IMAX. Photorealistic — no 3D render, no game engine.
 24fps, 180° shutter, pore-level skin realism.
-Lubezki × Deakins.
+Natural light only. 60:30:10 colour ratio.
+<DP attribution> × <DP attribution>.
 ```
+
+**Never put film grain, halation or "film look" in this block or any other
+prompt.** Grain asked for in a prompt is baked into the pixels; it will not
+survive an upscale and it fights every subsequent grade. All of it goes on in
+post. See `finishing.md`.
 
 Note what it does: it names the format, it names the register **and its
 negation**, it pins the shutter (which is what stops video-ish motion), it

@@ -34,6 +34,21 @@ seconds.** Artefacts become visible in generated footage at 6–8 seconds agains
 starts noticing the machine. One exception, at the very end, where the length
 reads as deliberate.
 
+**Know that this is contested.** The directors of a published 95-minute AI
+feature argue the opposite: that a **fifteen-second oner beats a run of
+two-second cuts**, because a sustained take *"mimics a real cameraman running
+through a village, which tricks the brain into forgetting the content is
+AI-generated."* Both positions are held by people shipping real work.
+
+The reconciliation, and what to plan against: **the six-second ceiling applies
+to a held face.** A long take that keeps moving through space — where the
+camera travels, the frame reveals, and no single face sits still in frame —
+can run much longer, and one of those is worth more than four quick cuts. If
+you want a long shot, earn it with motion, not with duration.
+
+Raise it with the user when a beat could go either way rather than defaulting
+silently.
+
 If the plan comes out at seven shots for a minute, that is not a pacing
 preference. It is a broken film. Re-plan it.
 
@@ -159,6 +174,13 @@ close-ups, 3–4 inserts, and **4–5 dedicated reaction shots.**
 If fewer than four are pure reactions, comedy will underperform — and a
 reaction close-up is also the cheapest and most reliable shot the models
 produce. When the budget is tight, spend it here.
+
+**Tight for dialogue, wide only to establish.** From an agency practitioner
+who shoots a great deal of it: *"stay tight with medium shots and closeup shots
+for talking, it will look wayyyyy better than wide shots."* The reason is
+mechanical — a face at wide size is a small part of the frame, so the model
+allocates it less detail and it drifts first. Establish the geography wide,
+then go tight and stay there for the conversation.
 
 For any scene between two people, the default coverage is: master, two-shot,
 OTS A, OTS B, clean single A, clean single B, inserts, reactions. **Save the

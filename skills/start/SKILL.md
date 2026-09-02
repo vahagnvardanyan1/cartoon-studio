@@ -36,6 +36,9 @@ Read these in full before generating anything:
   lip sync
 - `${CLAUDE_PLUGIN_ROOT}/references/finishing.md` — grade, grain, mix, the
   finishing checklist
+- `${CLAUDE_PLUGIN_ROOT}/references/creator-practice.md` — what people
+  shipping real work actually do, the true curation ratios, and where they
+  disagree with each other
 - `${CLAUDE_PLUGIN_ROOT}/references/model-notes.md` — tooling constraints
 
 Confirm the Picsart GenAI tools are available. If they are not, say so plainly
@@ -74,6 +77,31 @@ Create a working folder for this film and keep it current throughout:
   shots.md        the shot list, with a full camera block per shot
   audio.md        every take: text, model, voice, seed, stability, URL
 ```
+
+**Name every asset so it sorts and survives being seen out of context:**
+
+```
+S01-SH02-Keyframe-V1-Review
+S01-SH02-Video-V3-Approved
+S03-SH01-FinalFrame-Reference
+```
+
+`Scene – Shot – AssetType – Version – Status`. Keep reusable references —
+characters, locations, props — **centralised and linked, never duplicated per
+shot**; a duplicated reference is a reference that will drift.
+
+**Never overwrite a source before approval.** Keep the original and the
+revision together with version numbers, and **record why a take was selected**.
+That note is what lets a later reviewer — including you, next session — trust
+the choice.
+
+**Track derivation:** for every asset, which text, image or clip produced it.
+**Log the seed every time.** Without it you cannot match a regenerated line or
+shot after a picture change, and matching is exactly what you will need.
+
+**Treat the canon as read-only once references are locked.** Editing it
+mid-production silently invalidates everything generated before the edit. If it
+must change, say which approved assets are now stale.
 
 `assets.md` is the spine of the production. Every approved image goes in it
 with a note on what it is the authority for. When a later stage needs a
@@ -204,6 +232,12 @@ rather than the shot.
 **Keep a running cut.** Each approved segment is appended to the film so far,
 and the user can watch everything up to now at any point. That is what catches
 drift between beats — a thing no single segment can show.
+
+**Budget the real curation ratio.** Character-driven narrative work runs
+**20–65 generations per usable shot**; nobody shipping credible work is under
+about 7:1. A production planned at three attempts per shot runs out of credits
+around shot nine. Tell the user the real number at the plan stage —
+`creator-practice.md` §1 has the evidence.
 
 **Every word goes through the text gate — in every language, including
 English.** Nothing is recorded, generated or typeset until the lines have been

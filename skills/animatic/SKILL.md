@@ -62,3 +62,30 @@ Do not discard it. As each clip is approved it **replaces its still in the
 reel**, so the reel evolves from all-stills to all-motion and always represents
 the current state of the film. Every subsequent review watches the film as it
 stands, not a clip in isolation.
+
+---
+
+## Lay the music before you lay the pictures
+
+> *"I can't stress enough how important it is to start with the music."*
+
+The maker of the trailer that defined this genre put music and text on the
+timeline **within the first hour, before generating a single frame**, then
+beat-matched every clip's motion to a musical cue. A serialised creator works
+in 30–40 second near-final blocks — generating, animating and cutting at the
+same time — specifically to protect pacing.
+
+So: before the animatic is cut, get a temp score or the real one onto the
+timeline. Then cut the stills to it.
+
+Two things fall out of this that are hard to get any other way:
+
+- **The film's rhythm is decided by something that already has rhythm.**
+  Cutting pictures to silence and adding music afterwards produces a film where
+  the cuts and the music disagree, and no amount of later work fixes it.
+- **Shot durations come out of the music**, which means they are locked before
+  anything expensive is generated. That is the same argument as the animatic
+  itself, arrived at from the other end.
+
+If the score is not written yet, use a temp track with the right tempo and
+shape. A wrong-but-rhythmic temp is far better than silence.

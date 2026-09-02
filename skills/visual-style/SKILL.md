@@ -63,6 +63,57 @@ If the film's season or palette later changes, **regenerate this keyframe
 first**, then rebuild anything derived from it. A stale master keyframe
 silently poisons every shot built against it.
 
+## Design the world around the model's weaknesses
+
+Before locking the look, ask what this particular film will be asking the model
+to do badly — and whether the design can simply not ask.
+
+This is what separates the creators whose work holds up. Cartoon aliens
+sidestep the uncanny valley entirely; a retro VHS grade turns generation
+artefacts into a deliberate house style. One director replaced a gun with a
+stick so the restyled output kept a handmade quality. Another leans into the
+uncanny completely, because fighting it produces his worst results.
+
+**When a model is bad at something, the professional move is usually to design
+the shot so it is not asked** — not to fight it with a longer prompt. Hands
+manipulating small objects, crowds, readable text, precise repeated actions,
+photoreal human faces in close-up: each of these can often be designed around
+at the style stage for free, or fought for the whole production at great cost.
+
+Raise it explicitly: "this story has a lot of X, which this pipeline renders
+badly; here are two looks that avoid needing it."
+
+## Consider putting something real in it
+
+At one major AI film festival, **every winning entry had injected material that
+was not generated.** It is the most reliable single differentiator in the
+field, and it is worth asking about before the style is locked, because it
+changes the style.
+
+What working creators actually do:
+
+- Build or buy a physical prop or costume, **photograph it under real
+  lighting**, and use that photograph as the reference instead of a text
+  prompt.
+- Perform the lines themselves to a camera and map the performance across.
+- Shoot a plate — even on a phone — and replace only the background.
+- Use existing photographs: the user's own, or archival.
+- Hire a real voice, a real musician.
+
+Ask the user whether anything real is available to them. A single photograph of
+a real object, a real room or a real face will do more for the film than any
+prompt refinement, and it costs nothing to ask.
+
+## Stress-test the locations before committing
+
+A location is not a background. **It is a technical anchor that dictates the
+quality of the acting the model can perform in it.** A location the model
+renders badly will degrade every performance staged there — and you will
+misdiagnose it as an acting problem and rewrite prompts for a week.
+
+Generate one test frame with a character in each major location before the
+plates are approved. If the model struggles with a space, change the space.
+
 ## Then build the colour script
 
 Once the style key is approved, build a **colour script**: a strip of small

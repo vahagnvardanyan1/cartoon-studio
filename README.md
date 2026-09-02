@@ -82,7 +82,7 @@ turns into something else.
 
 ## Where the hard-won knowledge lives
 
-Seven reference files carry it. They are read at the start of a production and
+Eight reference files carry it. They are read at the start of a production and
 cited by the skills that enforce them.
 
 **The craft — what makes a film look like a film**
@@ -141,6 +141,13 @@ a film: upscale, normalise per clip, film LUT at 60–80%, **blur 0.3–0.6px th
 grain 8–15% in that order**, match every shot to a hero still, add the handheld
 tremor yourself, and a mix with the dialogue at −12 dB peak and everything else
 beneath it. It ends with a checklist of every named AI tell.
+
+`references/creator-practice.md` is field data from people who ship AI film
+that does not read as slop — their real curation ratios (nobody credible is
+under 7:1; character work runs 20–65:1), the eight things they all do, the
+seven questions they openly disagree on, and how they lay out a project on
+disk. Where the field disagrees, this file says so rather than picking a side
+quietly.
 
 `references/production-lessons.md` records the specific mistakes that ruin
 AI-generated animation — lifeless shots, characters who change size or breed
