@@ -166,8 +166,8 @@ The audio passes through untouched and drives the mouth, so a non-English
 language survives exactly as recorded.
 
 **Never pass speech to Seedance's `audioUrls`.** It treats supplied audio as a
-*style* reference and re-synthesises it. Armenian came back sounding Armenian
-and saying nothing.
+*style* reference and re-synthesises it. A non-English track came back sounding
+like the language and saying nothing.
 
 **Two-shots where both characters speak** cannot go through OmniHuman — it
 takes one portrait. Those stay Seedance mouth-movement with the dialogue laid
@@ -181,3 +181,60 @@ model's invented babble reads as presence rather than competing speech.
   the same job.
 - Draft everything at 480p. It is the same model at roughly a quarter the cost,
   so the draft predicts the final honestly. Re-run only the keepers at 1080p.
+
+---
+
+## Seedance will not move a mouth. Cover dialogue in singles.
+
+**Verified failure.** A shot prompted with *"Both men speak in turn — generate
+the mouth movement from this description"* came back with both men's mouths
+completely closed for ten seconds. The instruction was simply ignored. Laying
+the real dialogue under it produced the worst possible result: voices coming
+out of shut faces.
+
+Do not write "he speaks" into a Seedance prompt and expect anything. Treat
+**every line of dialogue as requiring a lip-sync model**, without exception.
+
+### The consequence for coverage
+
+OmniHuman takes **one portrait**. So a two-hander where both characters speak
+cannot be a two-shot. **Cover the exchange in singles instead:**
+
+| | |
+|---|---|
+| wide | the approach or the situation — silent |
+| single A | character A speaks → OmniHuman |
+| single B | character B answers → OmniHuman |
+| two-shot | the physical action between them — silent |
+
+This is standard shot/reverse-shot coverage and it is what the scene wanted
+anyway. It turns two shots into four, which pulls the average shot length down
+where it belongs, gives both actors a real lip-sync, and produces the reaction
+coverage that comedy needs.
+
+**Plan it at the shot list stage.** If the shot list has a two-hander with two
+speakers in it, it is already wrong — break it into singles before generating
+a single frame, not after discovering the mouths do not move.
+
+### What stays a two-shot
+
+Anything where nobody speaks: an object changing hands, a reaction, an
+entrance, a physical beat. Those are exactly where Seedance is strong.
+
+---
+
+## This skill is the engine, `shot-loop` is the driver
+
+`shot-loop` decides **what happens around** a clip: which shot is next, what
+that shot alone needs, how the clip is cut together with its own voice and
+score, and what the user is shown. This skill covers **how a clip is generated
+and judged**.
+
+If you are working through a film, run `shot-loop` and let it call in here per
+shot. Do not generate a run of clips from this skill directly — a fault in the
+first will be in all of them before anyone looks.
+
+**The review unit is never a bare clip.** A silent clip cannot be judged; the
+user approves things from picture alone that fall apart the moment the voice
+goes on. Hand every clip back to `shot-loop` to be cut with its audio before it
+is shown.

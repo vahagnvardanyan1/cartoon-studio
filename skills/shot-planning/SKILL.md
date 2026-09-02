@@ -139,3 +139,14 @@ stops the eye auditing them. Mark the cut point in the shot list.
 The model has no memory of your geometry. "Shop on the RIGHT of frame, lane
 running off to the LEFT, he enters from the LEFT" goes in the text of every
 prompt in that location — not just the first.
+
+## Never plan a two-shot in which two characters speak
+
+Lip-sync needs one portrait per pass, so a two-hander with two speakers cannot
+be lip-synced and the video model will not move the mouths on its own — it
+ignores the instruction outright and returns closed faces.
+
+Every exchange gets covered in **singles**: a wide for the situation, a single
+on each speaker, and a two-shot only for the silent physical beat between them.
+That is normal shot/reverse-shot coverage, it doubles the shot count in the
+right direction, and it is the only structure that lets both voices be real.

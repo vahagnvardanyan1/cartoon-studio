@@ -67,9 +67,9 @@ Two refinements that matter more than the average:
 - **Contrast beats speed.** Hitchcock's shower sequence alternates long and
   short. Pure uniformity at any tempo goes numb.
 - **One deliberate slow passage inside the fastest beat** is worth more than
-  another round of quick cuts. In the *Drop of Honey* film the two kings run
-  at 5 seconds a shot in the middle of a 2.4-second sequence, and the fire
-  afterwards lands harder because of it.
+  another round of quick cuts. On one production a formal, ceremonial passage
+  ran at 5 seconds a shot in the middle of a 2.4-second sequence, and the
+  violence afterwards landed harder because of it.
 
 ---
 
@@ -150,7 +150,7 @@ to the LEFT, he enters from the LEFT."
 Two practical notes learned the hard way:
 
 - **Check what the model actually produces before enforcing your spec.** On the
-  *Drop of Honey* film five frames had independently agreed on shop-right, and
+  one production film five frames had independently agreed on shop-right, and
   the written spec was the outlier. The majority was the better composition.
   Adopt it and rebuild the one frame that disagrees.
 - **Cross the line only on a strong movement**, or via a neutral head-on shot
@@ -165,8 +165,8 @@ Two practical notes learned the hard way:
 - **Smash cut** — hard cut from loud and busy to quiet, or the reverse.
 - **Repetition with variation** — repeat a framing exactly, change one element.
   Cheap in AI: one prompt, one variable swapped, gives a rule-of-three run.
-  The weapons catalogue in *Drop of Honey* is three identical insert framings
-  with three different objects.
+  A catalogue of objects being snatched up reads as three identical insert
+  framings with three different objects in them.
 - **Hold on a reaction** — the one place to exceed the ASL ceiling.
 - **Perceived pace is about how fast plot arrives**, not only cut rate. A fast
   cut over a static idea still reads slow.

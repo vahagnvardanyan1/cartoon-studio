@@ -96,7 +96,7 @@ that reads as a decade old. Do not offer it as the only option.
 ## The register decision cascades — re-audit after it changes
 
 Any planned deviation from the main style has to be re-checked when the style
-changes. On *Drop of Honey* a flat illuminated-manuscript sequence worked
+changes. On one production a flat-illustration sequence worked
 beside stylised 3D and would have shattered beside photography; the fix kept
 the idea and changed the execution to **a real manuscript photographed on the
 same lens**, written portion turned away and out of focus so no lettering

@@ -66,27 +66,53 @@ mark. Every later prompt pastes that block in **byte-identical**. Rewording it
 reads to the model as a different character, and is a leading cause of drift.
 Only the scene instructions change between prompts.
 
-## The eight stages
+## Two phases, not one long pipeline
 
-Run each in order. Each has its own skill — invoke it, don't reimplement it.
+The production runs in two shapes, and confusing them is how films come out
+inconsistent or come out late.
+
+### Phase A — the foundations, built once for the whole film
+
+These are **shared**. Every shot inherits them, so they must be locked before
+any shot exists. Doing them per-shot guarantees the film will not match itself.
 
 | # | Stage | Skill | Gate |
 |---|---|---|---|
 | 1 | Research the source | `story-research` | Findings confirmed |
 | 2 | Production plan | this skill, below | Plan approved |
 | 3 | Visual elements | `visual-elements` | List confirmed, unknowns answered |
-| 4 | Visual style | `visual-style` | Style keyframe approved |
-| 5 | Reference art | `asset-generation` | **Every asset approved individually** |
+| 4 | Visual style | `visual-style` | Style key approved |
+| 5 | Shared reference art | `asset-generation` | **Every asset approved individually** |
 | 6 | Shot planning | `shot-planning` | Shot list approved |
-| 7 | **Voice** | `voice-production` | Voice track approved |
-| 8 | **Animatic** | `animatic` | **The whole film approved as a reel** |
-| 9 | Clip generation | `clip-generation` | **Every clip approved, in the reel** |
-| 10 | Assembly | `film-assembly` | Final film approved |
+| 7 | Voice | `voice-production` | Every line approved |
+| 8 | Animatic | `animatic` | **The whole film approved as a reel** |
 
-**Stages 7 and 8 are where most of the pain gets avoided.** Voice comes before
+Stage 5 covers only what more than one shot needs: the style key, the character
+sheets, the scale sheet, the location plates, the hero props. **Anything only
+one shot needs is not made here** — it is made inside that shot's turn in
+Phase B, where you can see what the shot actually requires.
+
+Stages 7 and 8 are where most of the pain gets avoided. Voice comes before
 picture because lip-sync tools are audio-driven and the recorded line sets the
 shot's length. The animatic comes before motion because you cannot judge a film
 shot by shot — a problem of perception, not of cost.
+
+### Phase B — the shot loop, one shot at a time, in story order
+
+| Stage | Skill | Gate |
+|---|---|---|
+| 9 | **The shot loop** | `shot-loop` | **Each segment approved before the next starts** |
+| 10 | Final assembly | `film-assembly` | Final film approved |
+
+Phase B is a **loop, not a batch.** For each shot in turn: make whatever that
+shot alone needs, generate its keyframe, generate its clip, cut it together
+with its own voice and score, show the user *that piece of film*, and only then
+move to the next shot.
+
+**Never generate ahead of the gate.** Batching a beat's worth of clips before
+the first one is approved is how a wrong hat, a wrong screen direction or a
+wrong season propagates through four shots before anyone looks. It happened;
+it cost a day.
 
 ## Stage 2 — the production plan
 
@@ -126,9 +152,19 @@ yourself, say so plainly rather than describing it with borrowed confidence.
 Undeclared blindness is how a wrong character size, a missing hand or a season
 error survives ten more shots before anyone notices.
 
-**Review in the reel, not alone.** From the animatic onward, every approved
-clip replaces its still in the story reel, and every review watches the film as
-it currently stands.
+**Review the mix, never a bare clip.** A silent clip cannot be judged — the
+user has no way to tell whether the film works from picture alone, and will
+approve things that fall apart the moment the voice goes on. Every review is a
+rendered segment with its dialogue, narration, effects and score already in it.
+
+**Review in narration units.** If one spoken line runs across two shots, those
+two shots are a single reviewable unit. Cutting a sentence in half to fit a
+shot boundary makes the segment sound broken and the user will flag the mix
+rather than the shot.
+
+**Keep a running cut.** Each approved segment is appended to the film so far,
+and the user can watch everything up to now at any point. That is what catches
+drift between beats — a thing no single segment can show.
 
 **Fix causes, not symptoms.** A bad hand in one shot means the character sheet
 is wrong for every shot. Go back and fix the sheet.
@@ -164,13 +200,14 @@ first film and the second.
 3. **The craft.** Current editing practice, generation ratios, model-specific
    prompt syntax and failure modes.
 
-Two things this caught on *Drop of Honey* that would otherwise have shipped as
-errors: the customer is a **shepherd with a bludgeon**, not a hunter with a
-staff — which changes the first shot's silhouette and the murder weapon — and
-the honey is **not** stored in a կարաս, which is a half-buried wine jar the
-size of a person.
+Two things this caught on one production that would otherwise have shipped as
+errors: the visitor turned out to be **a herdsman carrying a bludgeon**, not a
+hunter with a staff — which changed the first shot's silhouette and the murder
+weapon — and
+the commodity being sold is **not** kept in the vessel everyone assumes, which
+turned out to be a half-buried wine jar the size of a person.
 
 Ask the researchers for the **verse form** as well as the content. The metre of
-*Drop of Honey* drops from eight-syllable lines to four-syllable lines at
+one production drops from eight-syllable lines to four-syllable lines at
 exactly the points where the violence accelerates. The poet had already
 storyboarded the edit; the shot list just had to follow him.

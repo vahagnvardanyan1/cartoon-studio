@@ -14,7 +14,7 @@ you see before the next one starts.
 
 Say **/start** and name your story. For example:
 
-> /start Hovhannes Tumanyan's Armenian tale «Շունն ու Կատուն»
+> /start the folk tale «The Dog and the Cat»
 
 ## Commands
 
@@ -31,6 +31,7 @@ Say **/start** and name your story. For example:
 | `/voice-production` | Records the narration and dialogue — **before any picture** |
 | `/animatic` | Cuts the stills to the voice so you can watch the whole film first |
 | `/clip-generation` | Renders the clips, shot by shot, into the reel |
+| `/shot-loop` | Build the film one shot at a time — make it, cut it with its sound, approve it, next |
 | `/film-assembly` | Music, sound, grade, titles, final film |
 
 **While you work:**

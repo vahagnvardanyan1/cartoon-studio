@@ -56,11 +56,10 @@ Three things make the difference between a useful pass and a useless one:
 
 ### It catches errors, not only style
 
-On the *Drop of Honey* production this pass corrected 1909 Lori dialect into
-modern Eastern Armenian — `Մեղր են քաշում. մին էլ հանկարծ` became
-`Մեղր էին քաշում, մեկ էլ հանկարծ` — and separately caught a straightforward
-mistake: the wrong word for an axe, `ցաքատ` where it should have been `կացին`.
-That was in the shot list, the narration and a prompt, and nobody had noticed.
+On one production this pass turned century-old dialect into clean modern
+standard usage throughout — and separately caught a straightforward mistake:
+the wrong word for a common tool. That wrong word was already in the shot list,
+in the narration and in an image prompt, and nobody had noticed.
 
 ### The model is a first pass, not the authority
 

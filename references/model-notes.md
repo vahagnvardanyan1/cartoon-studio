@@ -120,7 +120,7 @@ invents music and modern noise:
 ```
 SOUND: one hard deep bark, a low guttural growl, heavy claws scrabbling in
 dry grit, the thud of body weight hitting the ground, then abrupt silence
-with only a dry wind and distant sheep bells. No music. No human voices.
+with only a dry wind and one distant animal. No music. No human voices.
 ```
 
 Always say what must **not** be there. "No music" is worth including every time.
@@ -131,8 +131,9 @@ Always say what must **not** be there. "No music" is worth including every time.
 ### Dialogue shots: OmniHuman, never Seedance reference audio
 
 Seedance's `audioUrls` slot treats a supplied track as a **style reference and
-re-synthesises it.** Feed it Armenian and you get something with Armenian
-prosody and no Armenian words. This destroyed a whole film's dialogue once.
+re-synthesises it.** Feed it a non-English track and you get something with
+that language's prosody and none of its words. This destroyed a whole film's
+dialogue once.
 
 **`bytedance-omnihuman-v1.5`** takes a portrait image plus a real audio track
 and animates the face to it. The audio passes through untouched, so the

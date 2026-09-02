@@ -282,7 +282,7 @@ where events land, which you then replace with proper effects.
 
 ## Dialogue, not only narration
 
-A verse tale is not automatically narration. Tumanyan's *Drop of Honey* has
+A verse tale is not automatically narration. the source text's one production has
 the greeting written as a real exchange and both killings as shouted lines —
 and the first plan flattened all of it into a narrator talking over pictures.
 The user's note was blunt and correct: *"people should speak, not only
@@ -292,11 +292,11 @@ telling."*
 Give those lines to characters, keep the rest for the narrator. A folk tale
 usually contains far more dialogue than it first appears to.
 
-Cast a **distinct voice per speaker**, including crowds. On the *Drop of Honey*
-film that was five: narrator, shopkeeper, shepherd, crowd, and a cold official
-reader for the two royal proclamations. That last one carries the satire — the
-text switches from village dialect into chancery prose, and if both come out of
-the same mouth the joke disappears.
+Cast a **distinct voice per speaker**, including crowds. On the one production
+film that was five: a narrator, two principals, a crowd, and a cold official
+reader for a pair of formal proclamations. That last one carried the satire —
+the text switches from village dialect into chancery prose, and if both come
+out of the same mouth the joke disappears.
 
 ---
 
@@ -312,8 +312,8 @@ ways to absorb it:
 - **Add shots.** Split the beat into more, shorter shots under the same
   narration.
 
-On *Drop of Honey* the weapons catalogue came back at 13 seconds against a
-3-second shot. Beat 4 was re-planned from three shots into four sub-beats of
+On one production a rapid catalogue of objects came back at 13 seconds against
+a 3-second shot. Beat 4 was re-planned from three shots into four sub-beats of
 two or three shots each. The film grew from 22 shots to 26 and from 87 seconds
 to 99 — **and the average shot length did not move.** That is the correct
 outcome.
@@ -331,10 +331,10 @@ text. Three categories: emotions `[curious] [crying] [mischievously]`,
 delivery `[whispers] [shouts]`, reactions `[laughs] [sighs] [clears throat]`.
 
 ```
-[warmly, an old village storyteller beginning a tale] Մի գյուղացի…
-[rattling off a list at speed, barely pausing for breath] Որը ձեռին…
-[a cry of grief turning instantly into fury, shouting] Խեղդե՜ց, խեղդե՜ց…
-[cold, official, reading a proclamation aloud from a scroll] Հանուն…
+[warmly, an old village storyteller beginning a tale] <first line…>
+[rattling off a list at speed, barely pausing for breath] <catalogue line…>
+[a cry of grief turning instantly into fury, shouting] <the cry…>
+[cold, official, reading a proclamation aloud from a scroll] <the decree…>
 ```
 
 Check every take for two failures: **the tag being spoken aloud** instead of
@@ -359,9 +359,9 @@ the fallback, not the default.
 
 **One structural trick worth stealing.** Generate the same sound twice, in two
 different emotional contexts, and let the contrast do the work. In *Drop of
-Honey* the same fly buzzes on the honey drop at 31 seconds and on the dried
-stain at 104 — the first under a warm village bed with sheep bells, the second
-over nothing but dead wind. The audience hears the difference before noticing
+production a single insect buzzes on the same spot twice, seventy seconds
+apart — the first time under a warm inhabited ambience, the second over nothing
+but dead wind. The audience hears the difference before noticing
 it.
 
 ---
@@ -379,11 +379,11 @@ mandatory when the source is old or dialectal.
 
 A folk tale worth adapting is usually a century old, and its printed text is
 full of things that belong to the page rather than the mouth: archaic
-orthography, dialect forms, and metrical marks. Armenian is a clear case —
-Tumanyan's 1909 text writes the schwa explicitly (`գընում`, `ըսպանեցին`,
-`շըպըրտում`) to fill the syllable count. Preserving that spelling is correct
-for a printed edition and wrong for a soundtrack: the TTS fights it and a
-native speaker hears something stilted.
+orthography, dialect forms, and metrical marks. One clear case: a 1909 verse
+text wrote its reduced vowels out explicitly, purely to fill the syllable count
+for the metre. Preserving that spelling is correct for a printed edition and
+wrong for a soundtrack — the TTS fights it and a native speaker hears something
+stilted.
 
 **Fidelity to the source spelling is not a virtue in a recording.** Meaning and
 register are.
@@ -412,8 +412,7 @@ on the MCP call more than once.
 
 ### It finds real errors
 
-This is not only a style pass. On *Drop of Honey* it caught `ցաքատ` where the
-word should have been `կացին` — an actual wrong word that had propagated into
+This is not only a style pass. On one production it caught the wrong word for a common tool — an actual wrong word that had propagated into
 the shot list, the narration and an image prompt without anyone noticing.
 
 ### The user is the authority, not the model

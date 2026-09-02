@@ -101,3 +101,33 @@ the user the URL. Then tell them honestly what is still imperfect — lip sync,
 any remaining continuity drift, anything you would fix with more time. A film
 delivered with a known-issues list is more useful than one delivered with a
 flourish.
+
+---
+
+## By the time you get here, the film is already cut
+
+If `shot-loop` ran properly, every shot has already been trimmed, mixed with
+its own voice and score, approved, and appended to a running cut. This stage is
+**not** where the film is first assembled — it is the finishing pass over
+something the user has already watched grow.
+
+What is actually left:
+
+1. **One colour grade across every shot.** This is what makes separately
+   generated clips read as one film, and it cannot be done per-shot inside the
+   loop because it is a relative judgement across the whole thing.
+2. **Film grain**, 10–15%.
+3. **A global speed pass**, 10–15% faster if the cut drags — AI motion carries
+   a built-in slow-motion bias.
+4. **Music continuity.** Per-shot score levels set in the loop will not join up.
+   Lay one continuous score across the finished cut and re-balance the ducking.
+5. **Room tone across the seams**, so the ambience does not restart at each cut.
+6. **Any typeset text** — titles, credits, and any words that must be correct.
+   Never generated, always composited.
+7. **Final watch, start to finish**, against the pace targets and the slop
+   checklist in `editing-and-pace.md`.
+
+If the film has *not* been built through the loop and you are assembling raw
+clips here for the first time, say so plainly to the user: they are about to
+see problems that should have been caught twenty shots ago, and the honest
+options are to fix the worst of them or to re-run the loop.
