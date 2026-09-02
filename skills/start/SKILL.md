@@ -13,12 +13,29 @@ and stop at every gate for approval.
 
 Read these in full before generating anything:
 
+**The craft** — what makes a film look like a film:
+
+- `${CLAUDE_PLUGIN_ROOT}/references/cinematography.md` — the four camera axes,
+  lens language, blocking, screen grammar
+- `${CLAUDE_PLUGIN_ROOT}/references/lighting.md` — sources, ratios, colour
+  temperature, the colour script
+- `${CLAUDE_PLUGIN_ROOT}/references/directing.md` — scene construction,
+  coverage, the animation pipeline, Murch's rule of six
+- `${CLAUDE_PLUGIN_ROOT}/references/editing-and-pace.md` — shot counts, hold
+  times, hiding the seams
+
+**The medium** — what makes generated footage behave:
+
+- `${CLAUDE_PLUGIN_ROOT}/references/prompt-templates.md` — the prompt grammar
+- `${CLAUDE_PLUGIN_ROOT}/references/video-craft.md` — drift, consistency,
+  generation budgets
 - `${CLAUDE_PLUGIN_ROOT}/references/production-lessons.md` — the failures that
   ruin AI animation
-- `${CLAUDE_PLUGIN_ROOT}/references/video-craft.md` — why consistency is hard
-  and what actually holds it
+- `${CLAUDE_PLUGIN_ROOT}/references/text-and-language.md` — the text gate
 - `${CLAUDE_PLUGIN_ROOT}/references/voice-and-audio.md` — voice, dialogue and
   lip sync
+- `${CLAUDE_PLUGIN_ROOT}/references/finishing.md` — grade, grain, mix, the
+  finishing checklist
 - `${CLAUDE_PLUGIN_ROOT}/references/model-notes.md` — tooling constraints
 
 Confirm the Picsart GenAI tools are available. If they are not, say so plainly
@@ -49,11 +66,13 @@ Create a working folder for this film and keep it current throughout:
 
 ```
 <film-name>/
-  canon.md        story beats, continuity rules, season progression,
-                  and the IDENTITY STRINGS — see below
+  canon.md        story beats, continuity rules, season progression, the axis
+                  of action and light direction per location, and the
+                  IDENTITY STRINGS — see below
+  script.md       every word in the film, corrected and approved, plus casting
   assets.md       every approved reference, with its URL and what it locks
-  shots.md        the shot list
-  audio.md        every voice line and cue: text, model, voice, seed, URL
+  shots.md        the shot list, with a full camera block per shot
+  audio.md        every take: text, model, voice, seed, stability, URL
 ```
 
 `assets.md` is the spine of the production. Every approved image goes in it
@@ -83,9 +102,10 @@ any shot exists. Doing them per-shot guarantees the film will not match itself.
 | 3 | Visual elements | `visual-elements` | List confirmed, unknowns answered |
 | 4 | Visual style | `visual-style` | Style key approved |
 | 5 | Shared reference art | `asset-generation` | **Every asset approved individually** |
-| 6 | Shot planning | `shot-planning` | Shot list approved |
-| 7 | Voice | `voice-production` | Every line approved |
-| 8 | Animatic | `animatic` | **The whole film approved as a reel** |
+| 6 | Shot planning | `shot-planning` | Shot list approved, every shot carrying a full camera block |
+| 7 | **The text gate** | `voice-production` | **Every word corrected and approved — see below** |
+| 8 | Voice | `voice-production` | Every line approved |
+| 9 | Animatic | `animatic` | **The whole film approved as a reel** |
 
 Stage 5 covers only what more than one shot needs: the style key, the character
 sheets, the scale sheet, the location plates, the hero props. **Anything only
@@ -101,8 +121,8 @@ shot by shot — a problem of perception, not of cost.
 
 | Stage | Skill | Gate |
 |---|---|---|
-| 9 | **The shot loop** | `shot-loop` | **Each segment approved before the next starts** |
-| 10 | Final assembly | `film-assembly` | Final film approved |
+| 10 | **The shot loop** | `shot-loop` | **Each segment approved before the next starts** |
+| 11 | Final assembly | `film-assembly` | Final film approved |
 
 Phase B is a **loop, not a batch.** For each shot in turn: make whatever that
 shot alone needs, generate its keyframe, generate its clip, cut it together
@@ -165,6 +185,19 @@ rather than the shot.
 **Keep a running cut.** Each approved segment is appended to the film so far,
 and the user can watch everything up to now at any point. That is what catches
 drift between beats — a thing no single segment can show.
+
+**Every word goes through the text gate — in every language, including
+English.** Nothing is recorded, generated or typeset until the lines have been
+through a language model and the user has approved the result. See
+`${CLAUDE_PLUGIN_ROOT}/references/text-and-language.md`. This costs one text
+call and it is the single most avoidable source of rework in the pipeline,
+because text errors surface only after the voice is recorded, the lip-sync is
+generated and the shot is cut.
+
+**Specify all four camera axes on every shot.** Size, height, lens, movement —
+plus the light source and its direction. "Close-up, push in" is not a camera
+decision and it is the reason generated films look like slideshows. See
+`${CLAUDE_PLUGIN_ROOT}/references/cinematography.md`.
 
 **Fix causes, not symptoms.** A bad hand in one shot means the character sheet
 is wrong for every shot. Go back and fix the sheet.

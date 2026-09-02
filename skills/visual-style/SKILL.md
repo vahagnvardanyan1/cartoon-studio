@@ -63,10 +63,49 @@ If the film's season or palette later changes, **regenerate this keyframe
 first**, then rebuild anything derived from it. A stale master keyframe
 silently poisons every shot built against it.
 
+## Then build the colour script
+
+Once the style key is approved, build a **colour script**: a strip of small
+images, one per story beat, mapping value, hue and lighting across the whole
+film. Thumbnail size. One generation per beat, in a single pass.
+
+Its purpose, in Ralph Eggleston's words about the Pixar practice, is to hold
+"the emotional core of what we're trying to say visually with colour, value and
+lighting." **You should be able to read the story's arc from it with the images
+too small to identify.**
+
+It does two concrete jobs here:
+
+1. It stops every scene coming out the same temperature — which, with
+   unmotivated lighting, is most of why generated films look flat.
+2. It gives the finishing grade a target. The final grade matches every shot to
+   a hero still; the colour script decides which still, and where the film is
+   *supposed* to change temperature rather than being corrected to uniformity.
+
+Present it as one image strip and get it approved with the style.
+
+## Write down the light
+
+In `canon.md`, per location and per act: the key source, its direction, its
+quality, its ratio and its Kelvin. Also the **axis of action** per location —
+what is on the left, what is on the right, which way characters enter.
+
+Both get pasted into every prompt set in that location. The model has no memory
+of either, and light direction and screen direction are two of the three
+continuity classes that break an audience's spatial model rather than merely
+denting credibility.
+
 ## Output
 
-Record the style in `canon.md` and the approved keyframe URL in `assets.md`,
-marked as the master reference.
+Record the style in `canon.md`, the approved keyframe URL in `assets.md` marked
+as the master reference, and the colour script strip alongside it.
+
+Write the **universal style block** into `canon.md` too — the fixed text
+prepended byte-identical to every prompt in the film. It names the format, the
+render register *and its negation*, the shutter, the texture spec and the
+attribution. See `${CLAUDE_PLUGIN_ROOT}/references/prompt-templates.md` §7. It
+is what makes twenty separately generated shots read as one production, and it
+must never be paraphrased.
 
 ---
 

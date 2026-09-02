@@ -241,3 +241,120 @@ of title, and increasingly required by platforms that will distribute the work.
 - Some models charge *less* when supplied with reference video, and some
   include audio whether you ask for it or not. Read the pricing carefully —
   the intuitive assumptions are often wrong.
+
+---
+
+## 10. Why clips drift — the mechanism, and the numbers
+
+Drift is not bad luck. It has a published mechanism with two components:
+
+- **History forgetting.** The mutual information between the current output and
+  the preceding frames decays. The model loses the context that defined the
+  shot — including the instruction. "Pan left" gets forgotten in favour of
+  whatever pixel pattern now dominates the recent frames.
+- **Temporal degradation.** Quality falls as the *cumulative sum of per-step
+  errors*, compounding from noise initialisation, score estimation and
+  discretisation. A small mistake in frame 50 is a bigger one in frame 51.
+
+Onset is generally **past five to ten seconds**, earlier under load. Reported
+thresholds worth planning against:
+
+- **Character drift begins around shot 4–5** in complex scenes with four or
+  more speaking subjects.
+- **Lip-sync degrades on sentences over ten words**, worst at phrase endings.
+- **Multi-clip consistency degrades past thirty seconds** on most models.
+
+The paper's own finding — *incorporating more past frames monotonically
+alleviates history forgetting* — is exactly why the production answer is
+**keyframe anchoring**: chunk the shot and anchor each chunk to a ground-truth
+frame rather than letting the model free-run.
+
+**The practical consequence: the first and last second of every generation are
+the worst, for different reasons.** The head carries initialisation artefacts —
+discard the first two frames of any extended or chained clip. The tail carries
+accumulated drift and history loss — it is where faces morph and backgrounds
+reorganise. **Generate fifteen, use five, from the middle.**
+
+---
+
+## 11. Reference slots — allocate them deliberately
+
+Where a model takes multiple reference images, an unallocated set wastes them.
+A working scheme for four slots:
+
+| Slot | Content | Anchors |
+|---|---|---|
+| 1 | hero portrait, frontal | identity. Locked at project start, reused verbatim forever |
+| 2 | three-quarter, 45° rotation of the same character | identity under rotation |
+| 3 | wardrobe close-up | colour and texture |
+| 4 | the previous shot's final frame | lighting continuity |
+
+**Angular diversity is the requirement.** Two or three references at similar
+angles produce poor results; close-up plus full body plus side profile
+eliminates drift by the third shot.
+
+Keep reference strength **below maximum**, or characters go stiff and cannot
+adapt to new light or pose.
+
+---
+
+## 12. Seeds
+
+Same seed plus same prompt plus same settings gives the same output. In video
+the seed influences **motion patterns and temporal coherence across the whole
+clip**, not just the first frame.
+
+The workflow: find a good result, record its seed, lock it, then **change
+exactly one variable at a time.** Four to eight random seeds for exploration;
+two or three targeted seeds for production refinement.
+
+**A seed is not an identity lock.** It reduces variance and gives reproducible
+takes. It does not pin a character across shots on any current model.
+
+---
+
+## 13. The drift audit
+
+Score every generated shot against the character sheet, 0–10 on six checks:
+
+1. face shape
+2. hair length and parting
+3. eye colour
+4. wardrobe hue
+5. the distinguishing detail — the scar, the earring, the continuity mark
+6. body proportions under motion
+
+**Accept at 7. Below 6, regenerate changing one variable — not the whole
+prompt.** Rewriting the whole prompt loses the information about what was
+already working.
+
+If the same check fails twice across different shots, the fault is in the
+reference, not the prompt. Stop generating and rebuild the sheet.
+
+---
+
+## 14. How many generations a shot actually takes
+
+Plan against these. They are the difference between a budget and a hope.
+
+| Situation | Generations per usable shot |
+|---|---|
+| Controlled, reference-anchored, storyboarded | **~3**, ~25% selection rate |
+| Hard shots — complex staging, multiple characters | **~10** |
+| Uncontrolled, comedic, dialogue-heavy text-to-video | **~20** (~5% hit rate) |
+
+Documented productions, for scale: a three-minute episode ran **164 clips
+generated to 41 in the final cut**; a national-broadcast advert ran **300–400
+generations to 15 usable clips**; a ninety-second short took roughly 400
+generations.
+
+**Over 40% of finished shots on documented productions are stitched from two or
+more generations.** Treat composite shots as normal, not as failure.
+
+**Frames-first is roughly 3× cheaper than prompt-first** per finished clip,
+because you are not burning video credits to discover composition. Approve
+every start frame before spending a video credit.
+
+**Text-to-video is still right** for exploration where you do not yet know what
+the shot is, for abstract material with no fixed subject, and when you
+specifically want the model's motion invention rather than your own.

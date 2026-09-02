@@ -215,3 +215,115 @@ Hold every prompt and every assembled cut against this.
 - Metronomic TTS with no breath → generate each line separately, direct it
 - Missing room tone → the most common amateur giveaway; every shot needs a bed
 - Music chosen by keyword rather than emotional fit
+
+---
+
+## Murch's Rule of Six — the priority order for any cut
+
+| | Criterion | Weight |
+|---|---|---|
+| 1 | **Emotion** — does the cut preserve what the audience should feel here? | **51%** |
+| 2 | **Story** — does it advance the story? | **23%** |
+| 3 | **Rhythm** — is it rhythmically right? | **10%** |
+| 4 | **Eye-trace** — does it respect where the eye is looking? | **7%** |
+| 5 | **Two-dimensional plane** — 180° rule, screen direction | **5%** |
+| 6 | **Three-dimensional space** — the physical geography | **4%** |
+
+**"If you have to sacrifice certain of those six things to make a cut,
+sacrifice your way up, item by item, from the bottom."** A cut that is
+emotionally right survives a spatial violation; a spatially perfect cut does
+not survive being emotionally wrong.
+
+If a cut fails only on 4, 5 or 6 — make it. If it fails on 1 or 2, find a
+different cut however clean the geography.
+
+In a generated pipeline the temptation is to cut where the footage is
+cleanest. **The footage is not the criterion.**
+
+---
+
+## Hold times, specifically for generated footage
+
+| Shot type | Hold |
+|---|---|
+| Opening shot | 2–4s |
+| Character close-up | 2–5s — static AI faces become a problem around 4s |
+| Medium | 3–6s |
+| Two-shot with interaction | 4–8s — attention is distributed, so faces get less scrutiny |
+| Action | 2–4s |
+
+**Artefacts become visible at 6–8 seconds in generated footage versus 10–12 in
+filmed footage.** And the observation that matters most: **hyper-smooth,
+artefact-free motion itself triggers conscious awareness of synthetic origin
+when held too long.** You cannot fix that by generating better. Only by cutting
+sooner.
+
+Shot size sets a *floor* as well as a ceiling: a wide needs about two seconds
+for the audience to read it; a close-up can live at half a second. If your
+average shot length is dropping, your framings must be tightening, or the
+audience is being starved.
+
+---
+
+## Frankenstein editing
+
+**Most shots are not one shot.** Over 40% of finished shots on documented
+productions are stitched from two or more generations of the same prompt.
+
+1. **Over-generate with variation** — same prompt, small changes to seed,
+   phrasing or reference.
+2. **Mine fragments.** Scrub every generation marking *usable seconds*: the
+   half-second eyeline that works, the two-second hand move, the lighting beat.
+   You are not looking for a good take. You are looking for good seconds.
+3. **Hide the seams** — cut on action, on a sound effect, on a whip, or under
+   an audio bridge.
+
+---
+
+## Hiding the drift
+
+The principle: **give the audience a point of concentration that is not where
+your cut is most evident.**
+
+- **Cut mid-motion, never at rest.** Artefacts read at rest and vanish in
+  motion. Place the cut at the strongest motion moment available.
+- **Occlusion wipes** — let something cross frame and cut behind it.
+- **Whip pans** — the frame is already destroyed by motion blur, so it will
+  carry any join.
+- **Audio bridges** — carry sound across the cut so the ear says "continuous"
+  while the eye gets new pixels.
+- **On an extended or chained clip, discard the first two frames** and put the
+  cut at the strongest motion inside the overlap.
+
+---
+
+## Pacing is a curve, not a constant
+
+Plot the target average shot length **per sequence** before cutting, then check
+the actual curve after. Long breathing shots for setup and reflection,
+contracting into rapid cutting at the climax, and one deliberate break in the
+pattern at the end.
+
+Uniform shot length at any tempo is itself a tell.
+
+Two cue types drive the curve: **auditory** — cut on musical structure — and
+**visual** — cut on movement inside the frame.
+
+---
+
+## L-cuts and J-cuts
+
+- **L-cut** — picture cuts first, the outgoing audio continues over the new
+  image. The audience is visually in the new place but still tethered to the
+  last one. **Make this the default in dialogue coverage**: it lets you show
+  the listener's reaction under the speaker's line, and the real moment often
+  lives in the reaction.
+- **J-cut** — the incoming audio starts before the picture cuts. Anticipation,
+  or dread. Prepares the audience for the next scene before showing it.
+
+Overlap lengths: start at about **half a second** for a dialogue split; up to
+**two seconds** for a J-cut into a major sequence. The test: **if you can feel
+the overlap but not see it, it is working.**
+
+In a generated pipeline these do double duty — an audio overlap is also the
+cheapest possible seam-hider.

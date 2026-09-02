@@ -60,10 +60,28 @@ Place each audio track at its timecode in the compositor's top-level `audio`
 array — **not** as layers. The validator accepts audio layers and the renderer
 then refuses them.
 
-- Voice sits at full level
-- Music sits well under it, around 25–30 percent
-- Fade music in and out around dialogue with volume keyframes
+Levels, from `finishing.md` §6:
+
+| Element | Peak dB |
+|---|---|
+| Dialogue / narration | **−18 to −9**, target **−12** |
+| Sound effects | −10 to −20 |
+| Foley and ambience under dialogue | −15 to −25 |
+| Music as primary element | −18 to −22 |
+| Music under dialogue | −30 to −35 |
+
+**Music sits 12–20 dB below dialogue, ambience 10–15 dB below dialogue, and
+the dialogue never moves.** Delivery loudness for dialogue is −20 to −26 LUFS.
+
+- Fade music around dialogue with volume keyframes
 - Give each line a little air; do not butt lines against cuts
+- **One shared light reverb across every line of dialogue.** The absence of a
+  room is a major tell, and a shared reverb also glues together lines that were
+  generated separately
+- **EQ the synthetic voice**: high-pass at 80 Hz, boost 150–300 Hz for warmth,
+  boost 1–2 kHz for clarity, cut 6–10 kHz for harshness, compress 3:1 to 4:1
+- **One continuous room tone under the seams**, so the ambience does not
+  restart at every cut
 
 If a voice file reports no duration, derive it from file size and bitrate, or
 declare it generously — over-declaring adds silence, under-declaring truncates
@@ -75,24 +93,58 @@ Typeset these in the edit, never in a generated frame — models mangle
 lettering, especially non-Latin scripts. An opening title in the story's own
 language and a closing credit crediting the original author.
 
-## Finish the picture
+## Finish the picture — the pass that decides whether it reads as a film
 
-Raw generation is never the final picture. Treat these as pipeline stages, not
-cleanup:
+Follow `${CLAUDE_PLUGIN_ROOT}/references/finishing.md`. This is the cheapest
+and most reliable quality gain available and almost nobody does it. When the
+Runway festival jury explained what separated its finalists from ordinary AI
+video, the answer was not the model — it was editing, colour grading and sound
+design.
 
-- **Colour grade** the whole film to one look. Along with sound and pacing,
-  this is most of what separates a finished film from generated clips.
-- **Upscale, if delivering above draft resolution.** Architecture matters more
-  than brand: upscalers trained on real degraded footage sharpen what is there
-  and so *amplify* the temporal flicker inherent in generated video. Diffusion-
-  based upscalers invent plausible texture matching generated footage and are
-  the right family here — run them at low restoration strength or they
-  over-sharpen. Some are purpose-built for animation and process frames
-  independently to avoid smearing.
-- **Order matters: upscale first, then interpolate frame rate.** Interpolation
-  smooths motion; it does not sharpen pixels.
-- **Expect to composite.** A large share of finished shots on real productions
-  are stitched from several generations. Assume it is normal, not a failure.
+**Order matters and getting it wrong wastes the work:**
+
+1. **Upscale first**, before grading — so you restore detail you can then
+   *intentionally* soften, and so you clean compression artefacts before
+   pushing contrast into them. Use a diffusion-family upscaler at low
+   restoration strength; upscalers trained on real degraded footage amplify the
+   temporal flicker inherent in generated video. Upscale before frame-rate
+   interpolation, never after.
+2. **Normalise per clip.** Waveform and vectorscope; neutralise white balance,
+   set black and white points, tame oversaturation. This is where the
+   deep-fried look dies, and it must be per clip because
+   generation-to-generation variance is the enemy.
+3. **Film emulation LUT** on its own node at **60–80% opacity**. Do not bake
+   it.
+4. **Blur, then grain, in that order.** Light Gaussian **0.3–0.6px first**,
+   then 35mm or 16mm grain at **8–15%**. The blur kills the plastic
+   over-sharpness; the grain replaces the destroyed high-frequency detail with
+   organic high-frequency detail. Reversing the order gives you mush.
+5. **Match every shot to a hero still** — shadow tint, highlight warmth,
+   saturation, contrast. **This is what makes separately generated clips read
+   as one film**, and it is the pass most often skipped. The colour script says
+   which still, and where the film is *supposed* to change temperature rather
+   than being corrected flat.
+6. **Add motion imperfection.** Generated camera motion is too stable and too
+   linear. Add the tremor in post: shoulder-mounted, a real operator's breath,
+   a constant fine 1–2cm wobble. Add motion blur where movement is
+   unnaturally sharp.
+7. **The speed pass.** AI motion carries a built-in slow-motion bias. If the
+   cut drags, run the whole film **10–15% faster** and watch it again. This is
+   usually a bigger improvement than any individual reshoot.
+
+**The hard limit, so nobody wastes an afternoon: grain and blur fix texture.
+They cannot fix motion artefacts or anatomical errors.** A morphing hand is a
+regeneration, not a grade note.
+
+**Expect to composite.** Over 40% of finished shots on documented productions
+are stitched from several generations. Assume it is normal.
+
+## Run the finishing checklist
+
+Watch the whole film once, start to finish, against the checklist at the end of
+`finishing.md` — texture, face, motion, light and grade, cut, sound. Every item
+on it is a named tell. Report what you find honestly rather than delivering and
+hoping.
 
 ## Deliver
 

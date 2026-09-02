@@ -31,14 +31,21 @@ memory; identity strings are pasted byte-identical from the file.
 From `shots.md`: what happens, who is in it, its planned length, its camera
 move, which voice cue lands on it, and which references it wires in.
 
-**Check it against two rules before generating anything:**
+**Check it against four rules before generating anything:**
 
+- **Is the camera block complete?** Size, height, lens, depth of field,
+  movement, light source and direction, the axis, the screen direction, the
+  in-frame and the out-frame. A blank in any of those is a decision you are
+  about to hand to the model. Fill it in now. See `cinematography.md`.
+- **Does this shot violate the 30° rule against the previous one?** Successive
+  shots of the same subject must differ by ≥30° of angle or a full rung of the
+  size ladder. MS→MCU from the same position reads as a jump cut.
 - **Does more than one character speak in this shot?** If so the shot is wrong
   — lip-sync takes one portrait at a time and the video model will not move
   mouths on its own. Break it into singles now, before generating. See
   `clip-generation`.
-- **Does it carry a face for more than six seconds?** Then it is too long. Split
-  it or trim the plan.
+- **Does it carry a face for more than six seconds?** Then it is too long.
+  Artefacts become visible at 6–8 seconds. Split it or trim the plan.
 
 ### 2. Make only what this shot needs
 
@@ -54,11 +61,25 @@ the screen direction in the prompt text; the model has no memory of either.
 against the canon: costume, hair, season, light direction, screen direction,
 no text in frame.
 
+Two checks specific to the keyframe, both cheap and both decisive:
+
+- **The silhouette test.** Does the pose read as a black shape? If not,
+  restage. Merged limbs and lost props get worse in motion, never better.
+- **Is there a contact shadow** where the body meets the ground or the object?
+  If the keyframe has no occlusion shadow at the contact points, the video
+  model will float the character — nothing in frame one tells it about weight.
+
 ### 3. Generate the clip
 
 Generated **longer than the cut needs** — a 2.5-second shot is still generated
 at 6–8 seconds, because there is no way to extend later and there is always a
 better two seconds inside a longer take.
+
+**Then run the drift audit on the result.** Score it against the character
+sheet 0–10 on six checks: face shape, hair length and parting, eye colour,
+wardrobe hue, the continuity mark, body proportions under motion. **Accept at
+7. Below 6, regenerate changing exactly one variable** — not the whole prompt,
+which throws away what was already working.
 
 Audio decision, made per shot:
 
@@ -114,3 +135,6 @@ reference** — that is where it lives.
   waiting time to check the previous segment against the canon, not to fire the
   next three.
 - **Report drift you can see yourself** before the user does.
+- **Do not grade inside the loop.** Colour is a relative judgement across the
+  whole film and belongs in `film-assembly`. Per-shot grading in the loop
+  produces twenty shots that each look fine and do not match.
